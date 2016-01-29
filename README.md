@@ -1,4 +1,4 @@
 # EagleForceFalconStrike
 Group Project
 
-It's badass.
+This read me is going ot be totally bad ass. 
