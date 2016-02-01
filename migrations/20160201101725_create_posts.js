@@ -6,6 +6,7 @@ exports.up = function(knex, Promise) {
     table.integer('upvotes');
     table.integer('downvotes');
     table.text('body');
+    table.string('cat_name');
     table.timestamps();
   })
 };
