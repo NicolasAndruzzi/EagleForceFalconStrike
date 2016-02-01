@@ -1,0 +1,16 @@
+extends ../layout
+include ../mixins
+
+block content
+
+  +nav("StandApp")
+     +nav_item( "Home.html" ) Home
+     +nav_item( "About.html" ) About
+     +nav_item( "Login.html" ) Login
+   .row
+       .col-md-4.col-sm-6.col-xs-12
+         +panel("Helps")
+       .col-md-4.col-sm-6.col-xs-12
+         +panel("Interestings")
+       .col-md-4.col-sm-6.col-xs-12
+         +panel("Events")
