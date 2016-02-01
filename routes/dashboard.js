@@ -12,7 +12,9 @@ function Posts(){
 
 // get route for dashboard
 router.get('/', function (req, res, next) {
-  res.render('index', {title: "You are on Dashboard"});
+  Posts().select().then(function(posts){
+    res.render('index', {title: "You are on Dashboard", posts: posts});
+  })
 })
 
 //get route for category (helps or interestings)
@@ -31,7 +33,7 @@ router.get('/', function (req, res, next) {
 
 // get route to create a new post
 router.get('/new', function (req, res, next) {
-  Users().select().then(function (user){
+  Users().select().first().then(function (user){
     res.render('posts/form', {title: "this is the new form page", user: user})
   })
 })
@@ -44,8 +46,22 @@ router.get('/new', function (req, res, next) {
 // })
 
 //post route to submit form and update the Posts database
-// router.post('/', function (req, res, next) {
-//     Users().where()
-// })
+router.post('/', function (req, res, next) {
+    // Posts().insert({
+    //   author_id: Number(req.body.author_id),
+    //   upvotes: Number(req.body.upvotes),
+    //   downvotes: Number(req.body.downvotes),
+    //   body: req.body.body,
+    //   cat_name: req.body.cat_name,
+    //   created_at: Number(req.body.created_at),
+    //   updated_at: Number(req.body.updated_at)
+    // }).then(function (result) {
+    //   res.redirect('/')
+    // })
+
+    Posts().insert(req.body).then(function (posts) {
+      res.redirect('/')
+    })
+})
 
 module.exports = router;

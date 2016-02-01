@@ -21,7 +21,6 @@ router.get('/', function (req, res, next) {
 // get route that will display individual user profile page
 router.get('/:id', function(req, res, next){
   Users().where('id', req.params.id).first().then(function (user){
-    // res.send("You're on the right page")
     res.render('users/show', {user: user})
   })
 })
