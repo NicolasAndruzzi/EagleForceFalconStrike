@@ -18,7 +18,7 @@ block content
     for user in users
       tr 
         td= user.id
-        td= user.user_name
+        td: a(href='/users/#{user.id}')= user.user_name
         td= user.first_name
         td= user.last_name
         td= user.score

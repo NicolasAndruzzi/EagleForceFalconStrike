@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var knex = require('../db/knex')
+var knex = require('../db/knex');
 
 function Users(){
   return knex('users');
@@ -29,17 +29,23 @@ router.get('/', function (req, res, next) {
 //   res.render('posts/index', {title: "you are on the category"});
 // })
 
-// get route for users
-
-router.get('/users', function (req, res, next) {
-  Users().select().then(function (users) {
-    res.render('users/index', {title: "this is the users page", users:users})
-
+// get route to create a new post
+router.get('/new', function (req, res, next) {
+  Users().select().then(function (user){
+    res.render('posts/form', {title: "this is the new form page", user: user})
   })
 })
 
+//get route to create a new post
+// router.get('/users/:id/new', function (req, res, next) {
+//   Users().where('id', req.params.id).then(function (user){
+//     res.render('posts/form', {title: "this is the new form page", user: user})
+//   })
+// })
 
-
-
+//post route to submit form and update the Posts database
+// router.post('/', function (req, res, next) {
+//     Users().where()
+// })
 
 module.exports = router;
