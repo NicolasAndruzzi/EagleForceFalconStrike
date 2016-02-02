@@ -55,6 +55,8 @@ i{
 .profile_pic{
   float: left;
   margin-right: 5px;
+  height: 50px;
+  width: 50px;
 }
 .numberOf{
   padding: 5px;
