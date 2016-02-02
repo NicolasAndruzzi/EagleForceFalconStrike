@@ -5,17 +5,19 @@ block content
   p Welcome to #{title} 
   a(href="/users") Users
   div
-  a(href="/dashboard/new") Add New Post
-  if posts
-    for post in posts
-      p= post.body
-  //- table 
-  //-   thead 
-  //-     tr
-  //-       th body
-  //-       //- th cat name
-  //-   tbody 
+  a(href="/posts/new") Add New Post
+  div.helps
+    ul
+      each post, i in posts
+        if post.cat_name === "helps" 
+          li= "The body is: " +post.body+ " and the category is: " + post.cat_name
+  div.interestings
+    ul
+      each post, i in posts
+        if post.cat_name === "interestings"
+          li= "The body is: " +post.body+ " and the category is: " + post.cat_name
+    
+    
+  //- if posts
   //-   for post in posts
-  //-     tr 
-  //-       td= post.body
-  //-       //- td= post.cat_name
+  //-     p= post.body
