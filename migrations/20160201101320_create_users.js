@@ -8,7 +8,7 @@ exports.up = function(knex, Promise) {
     table.integer('score');
     table.string('title');
     table.boolean('is_admin');
-    table.string('github_url');
+    table.string('linkedin_id');
   })
 };
 

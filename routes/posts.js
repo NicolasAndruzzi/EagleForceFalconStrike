@@ -16,7 +16,7 @@ function Posts(){
 
 // get route to create a new post
 router.get('/new', function (req, res, next) {
-  Users().where("id", req.params.id).first().then(function (user){
+  Users().where("linkedin_id", res.locals.user.id).first().then(function (user){
     res.render('posts/form', {title: "this is the new form page", user: user})
   })
 })

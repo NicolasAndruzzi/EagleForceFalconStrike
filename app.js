@@ -64,12 +64,7 @@ passport.use(new LinkedInStrategy({
         });
       }
     })
-
     done(null, profile)
-
-
-
-
   }
 ));
 
