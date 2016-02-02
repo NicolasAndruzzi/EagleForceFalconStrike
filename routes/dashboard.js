@@ -10,17 +10,14 @@ function Posts(){
   return knex('posts');
 }
 
-// function Login(){
-//   return knex('login');
-// }
-
-
-
-// get route for dashboard  
+// get route for dashboard
 router.get('/', function (req, res, next) {
   Users().select().then(function (users) {
     Posts().select().then(function (posts) {
-      res.render('index', {title: "You are on Dashboard", user:users, posts: posts});
+      var profile = res.locals.user
+      console.log("******");
+      console.log(profile);
+      res.render('index', {title: "You are on Dashboard", user:users, posts: posts, profile:profile});
     })
   })
 })

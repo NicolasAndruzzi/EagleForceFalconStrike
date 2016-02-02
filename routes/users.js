@@ -14,7 +14,6 @@ function Posts(){
 router.get('/', function (req, res, next) {
   Users().select().then(function (users) {
     res.render('users/index', {title: "this is the users page", users:users})
-
   })
 })
 
