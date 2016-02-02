@@ -18,6 +18,12 @@ var authRoutes = require('./routes/auth');
 
 var app = express();
 
+var knex = require('./db/knex');
+
+function Users(){
+  return knex('users');
+}
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -40,8 +46,30 @@ passport.use(new LinkedInStrategy({
     callbackURL: process.env.HOST + "/auth/linkedin/callback"
   },
   function(token, tokenSecret, profile, done) {
-    // console.log(profile)
+    Users().where('linkedin_id', profile.id).first().then(function (user) {
+      if(user){
+        console.log("*****USER****");
+        console.log(user);
+        res.cookie("user", profile.id)
+        res.redirect('/');
+      } else {
+        Users().insert({
+          linkedin_id: profile.id,
+          first_name: profile.name.givenName,
+          last_name: profile.name.familyName
+        }, "id").then(function (user) {
+          done(null, profile)
+          res.cookie("user", profile.id)
+          res.redirect('/');
+        });
+      }
+    })
+
     done(null, profile)
+
+
+
+
   }
 ));
 

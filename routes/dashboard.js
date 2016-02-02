@@ -15,9 +15,9 @@ router.get('/', function (req, res, next) {
   Users().select().then(function (users) {
     Posts().select().then(function (posts) {
       var profile = res.locals.user
-      console.log("******");
-      console.log(profile);
-      res.render('index', {title: "You are on Dashboard", user:users, posts: posts, profile:profile});
+      // console.log("******");
+      // console.log(profile);
+      res.render('index', {title: "You are on Dashboard", user:users, posts: posts, profile: profile});
     })
   })
 })

@@ -16,28 +16,8 @@ router.get('/logout', function (req, res, next) {
   res.redirect('/');
 })
 
-router.get('/linkedin/callback', passport.authenticate('linkedin', { failureRedirect: '/' }),
-function (req, res, next) {
-  // if statement to see if user exists , else statement - knex insert into Users table
-  Users().where('linkedin_id', res.locals.user.id).first().then(function (user) {
-    console.log("****user****");
-    console.log(user)
-    console.log("****res.locals.user.id****");
-    console.log(res.locals.user.id);
-    if(res.locals.user.id){
-      Users().insert({
-        linkedin_id: res.locals.user.id,
-        first_name: res.locals.user.name.givenName,
-        last_name: res.locals.user.name.familyName
-      }, "id").then(function (user) {
-        res.cookie("user", res.locals.user.id)
-        res.redirect('/');
+router.get('/linkedin/callback', passport.authenticate('linkedin', { failureRedirect: '/' , successRedirect: '/'}))
 
-      })
-    }
-  })
-
-})
 
 // { provider: 'linkedin',
 //   id: 'YKBYNsgTZ-',
