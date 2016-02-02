@@ -10,6 +10,11 @@ html
       br
       a(href="/dashboard/about") about
       br
+    if profile  
+      a(href="/") logout
+    else
       a(href="/auth/linkedin") login
-    h1 Hello, #{profile.displayName}
+    if profile
+      h1 Hello, #{profile.displayName}
+      
   
