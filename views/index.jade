@@ -2,4 +2,22 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  p Welcome to #{title} 
+  a(href="/users") Users
+  div
+  a(href="/posts/new") Add New Post
+  div.helps
+    ul
+      each post, i in posts
+        if post.cat_name === "helps" 
+          li= "The body is: " +post.body+ " and the category is: " + post.cat_name
+  div.interestings
+    ul
+      each post, i in posts
+        if post.cat_name === "interestings"
+          li= "The body is: " +post.body+ " and the category is: " + post.cat_name
+    
+    
+  //- if posts
+  //-   for post in posts
+  //-     p= post.body

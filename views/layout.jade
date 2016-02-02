@@ -5,3 +5,11 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     block content
+    header
+      a(href="/dashboard") home
+      br
+      a(href="/dashboard/about") about
+      br
+      a(href="/auth/linkedin") login
+    h1 Hello, #{profile.displayName}
+  
