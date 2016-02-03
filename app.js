@@ -48,10 +48,7 @@ passport.use(new LinkedInStrategy({
   function(token, tokenSecret, profile, done) {
     Users().where('linkedin_id', profile.id).first().then(function (user) {
       if(user){
-        // console.log("*****USER****");
         // console.log(user);
-        res.cookie("user", profile.id)
-        res.redirect('/');
       } else {
         Users().insert({
           linkedin_id: profile.id,
@@ -59,11 +56,11 @@ passport.use(new LinkedInStrategy({
           last_name: profile.name.familyName
         }, "id").then(function (user) {
           done(null, profile)
-          res.cookie("user", profile.id)
-          res.redirect('/');
+          res.redirect('/')
         });
       }
     })
+
     done(null, profile)
   }
 ));
@@ -73,6 +70,7 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(user, done) {
+  // console.log('---------------------------', user);
   done(null, user)
 });
 

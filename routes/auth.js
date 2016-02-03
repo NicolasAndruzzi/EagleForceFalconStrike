@@ -8,12 +8,13 @@ function Users(){
 }
 
 router.get('/linkedin', passport.authenticate('linkedin'), function(req, res, next){
-
 });
 
 router.get('/logout', function (req, res, next) {
-  req.session = null;
-  res.redirect('/');
+  // req.session = null;
+  res.clearCookie("session")
+  res.clearCookie("session.sig")
+  res.render('logout')
 })
 
 router.get('/linkedin/callback', passport.authenticate('linkedin', { failureRedirect: '/' , successRedirect: '/'}))

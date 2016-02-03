@@ -16,8 +16,8 @@ html(lang="en")
       +nav("StandApp")
         +nav_item( "/" ) Home
         +nav_item( "/dashboard/about" ) About
-        if profile 
-          +nav_item( "/" ) Logout
+        if user
+          +nav_item( "/auth/logout" ) Logout
           +nav_item( "/posts/new" ) Add A Post
           +nav_item( "/users" ) All Users
         else 
