@@ -14,7 +14,7 @@ router.get('/logout', function (req, res, next) {
   // req.session = null;
   res.clearCookie("session")
   res.clearCookie("session.sig")
-  res.render('logout')
+  res.redirect('/')
 })
 
 router.get('/linkedin/callback', passport.authenticate('linkedin', { failureRedirect: '/' , successRedirect: '/'}))
