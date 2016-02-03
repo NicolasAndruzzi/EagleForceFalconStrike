@@ -17,7 +17,7 @@ router.get('/new', function (req, res, next) {
     res.render('posts/form', {title: "this is the new form page", user: user})
     })
   } else {
-    res.redirect('/dashboard')
+    res.redirect('/auth/linkedin')
   }
 })
 

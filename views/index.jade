@@ -1,21 +1,38 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title} 
-  a(href="/users") Users
-  div
-  if profile 
-    a(href="/posts/new") Add New Post
-  else 
-    a(href="/dashboard") Add New Post
-  div.helps
-    ul
-      each post, i in users
-        if post.cat_name === "helps" 
-          li= "The body is: " +post.body+ " and the category is: " + post.cat_name + ". The author of this post is:  " + post.first_name + " " + post.last_name 
-  div.interestings
-    ul
-      each post, i in users
-        if post.cat_name === "interestings" 
-          li= "The body is: " +post.body+ " and the category is: " + post.cat_name + ". The author of this post is:  " + post.first_name + " " + post.last_name 
+  .row
+      .col-md-4.col-sm-6.col-xs-12
+        +panel("Helps", "info")
+          .post-container
+            +panel("post", "info")
+              .post-style-container
+                .heading_container
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //- 
+  //- 
+  //- h1= title
+  //- p Welcome to #{title} 
+  //- div.helps
+  //-   ul
+  //-     each post, i in users
+  //-       if post.cat_name === "helps" 
+  //-         li= "The body is: " +post.body+ " and the category is: " + post.cat_name + ". The author of this post is:  " + post.first_name + " " + post.last_name 
+  //- div.interestings
+  //-   ul
+  //-     each post, i in users
+  //-       if post.cat_name === "interestings" 
+  //-         li= "The body is: " +post.body+ " and the category is: " + post.cat_name + ". The author of this post is:  " + post.first_name + " " + post.last_name 
