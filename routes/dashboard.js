@@ -25,6 +25,7 @@ router.post('/', function (req, res, next) {
       author_id: users.id,
       body: req.body.body,
       cat_name: req.body.cat_name,
+      subject: req.body.subject,
     }).then(function (posts) {
       res.redirect('/')
     })

@@ -7,7 +7,8 @@ exports.up = function(knex, Promise) {
     table.integer('downvotes');
     table.text('body');
     table.string('cat_name');
-    table.timestamps();
+    table.string('subject');
+    table.timestamps(); 
   })
 };
 
