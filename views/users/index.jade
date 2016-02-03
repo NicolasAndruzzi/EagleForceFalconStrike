@@ -6,7 +6,7 @@ include ../mixins
 block content
 
   +nav("StandApp")
-     +nav_item( "Home.html" ) Home
+     +nav_item( "/" ) Home
      +nav_item( "About.html" ) About
      +nav_item( "Login.html" ) Login
    .row
@@ -24,11 +24,11 @@ block content
                  .button-container   
                    .comments-container
                      h5.numberOf 25
-                     a.i(class='fa fa-comment-o fa-2x')
+                     a.i(href='/login' class='fa fa-comment-o fa-2x')
                    .thumbs-container
-                     a.i(class='fa fa-thumbs-o-up fa-2x')
+                     a.i(href='#' class='fa fa-thumbs-o-up fa-2x')
                      h5.numberOf 13
-                     a.i(class='fa fa-thumbs-o-down fa-2x')
+                     a.i(href='#' class='fa fa-thumbs-o-down fa-2x')
                      h5.numberOf 20
              +panel("post", "info")
              +panel("post", "info")

@@ -3,7 +3,9 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   overflow: hidden;
 }
-
+::-webkit-scrollbar {
+    display: none;
+}
 a {
   color: #00B7FF;
 }
