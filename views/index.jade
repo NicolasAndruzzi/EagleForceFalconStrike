@@ -5,7 +5,10 @@ block content
   p Welcome to #{title} 
   a(href="/users") Users
   div
-  a(href="/posts/new") Add New Post
+  if profile 
+    a(href="/posts/new") Add New Post
+  else 
+    a(href="/dashboard") Add New Post
   div.helps
     ul
       each post, i in users

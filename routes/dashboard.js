@@ -20,7 +20,7 @@ router.get('/', function (req, res, next) {
 //post route to submit form and update the Posts database to be displayed on dashboard page
 router.post('/', function (req, res, next) {
   Users().where('linkedin_id', res.locals.user.id).first().then(function(users){
-    console.log(users);
+    // console.log(users);
     Posts().insert({
       author_id: users.id,
       body: req.body.body,

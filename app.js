@@ -48,8 +48,8 @@ passport.use(new LinkedInStrategy({
   function(token, tokenSecret, profile, done) {
     Users().where('linkedin_id', profile.id).first().then(function (user) {
       if(user){
-        console.log("*****USER****");
-        console.log(user);
+        // console.log("*****USER****");
+        // console.log(user);
         res.cookie("user", profile.id)
         res.redirect('/');
       } else {
