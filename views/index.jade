@@ -8,16 +8,22 @@ block content
   a(href="/posts/new") Add New Post
   div.helps
     ul
-      each post, i in posts
+      each post, i in users
         if post.cat_name === "helps" 
-          li= "The body is: " +post.body+ " and the category is: " + post.cat_name
+          li= "The body is: " +post.body+ " and the category is: " + post.cat_name + ". The author of this post is:  " + post.first_name + " " + post.last_name 
   div.interestings
     ul
-      each post, i in posts
-        if post.cat_name === "interestings"
-          li= "The body is: " +post.body+ " and the category is: " + post.cat_name
-    
-    
-  //- if posts
-  //-   for post in posts
-  //-     p= post.body
+      each post, i in users
+        if post.cat_name === "interestings" 
+          li= "The body is: " +post.body+ " and the category is: " + post.cat_name + ". The author of this post is:  " + post.first_name + " " + post.last_name 
+
+  //- div.helps
+  //-   ul
+  //-     each post, i in posts
+  //-       if post.cat_name === "helps" 
+  //-         li= "The body is: " +post.body+ " and the category is: " + post.cat_name 
+  //- div.interestings
+  //-   ul
+  //-     each post, i in posts
+  //-       if post.cat_name === "interestings"
+  //-         li= "The body is: " +post.body+ " and the category is: " + post.cat_name

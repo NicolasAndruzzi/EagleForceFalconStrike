@@ -10,15 +10,21 @@ function Posts(){
   return knex('posts');
 }
 
-// get route for dashboard
+// get route for dashboard, working
+// router.get('/', function (req, res, next) {
+//   Users().select().then(function (users) {
+//     Posts().select().then(function (posts) {
+//       var profile = res.locals.user
+//       res.render('index', {title: "You are on Dashboard", users:users, posts: posts, profile: profile});
+//     })
+//   })
+// })
+
+
 router.get('/', function (req, res, next) {
-  Users().select().then(function (users) {
-    Posts().select().then(function (posts) {
+  Users().fullOuterJoin("posts", "users.id", "posts.author_id").then(function (users) {
       var profile = res.locals.user
-      // console.log("******");
-      // console.log(profile);
-      res.render('index', {title: "You are on Dashboard", user:users, posts: posts, profile: profile});
-    })
+      res.render('index', {title: "You are on Dashboard", users:users});
   })
 })
 
@@ -29,7 +35,7 @@ router.post('/', function (req, res, next) {
     Posts().insert({
       author_id: users.id,
       body: req.body.body,
-      cat_name: req.body.cat_name
+      cat_name: req.body.cat_name,
     }).then(function (posts) {
       res.redirect('/')
     })
