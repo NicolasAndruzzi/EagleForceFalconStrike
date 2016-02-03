@@ -63,3 +63,18 @@ i{
 .numberOf{
   padding: 5px;
 }
+.row{
+  display: flex;
+  justify-content: center;
+}
+.input{
+  padding: 5vh;
+  color: white;
+  background-color: grey;
+}
+.label{
+  font-size: 3vh;
+}
+.actions{
+  float: right;
+}

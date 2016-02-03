@@ -1,0 +1,21 @@
+extends ../layout
+include ../mixins
+
+//for post in posts sort of situation here when working with db, all panels are just dummy panels
+//for right now, should be generated dynamically 
+block content
+
+  +nav("Helps, Interestings, or Events")
+     +nav_item( "/" ) Home
+     +nav_item( "About.html" ) About
+     +nav_item( "Login.html" ) Login
+    .row
+      form(name="#", method="post")
+        div.input
+          span.label Post Title
+          input(type="text", name="title")
+        div.input
+          span.label Content
+          textarea(name="content", rows="3", cols="80")
+        div.actions
+          input(type="submit", value="Submit", class="btn btn-primary")
