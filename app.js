@@ -35,7 +35,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({ keys: [process.env.SESSION_KEY1, process.env.SESSION_KEY2] }))
+app.use(session({ keys: [process.env.SESSION_KEY1, process.env.SESSION_KEY2]}))
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -43,12 +43,12 @@ app.use(passport.session());
 passport.use(new LinkedInStrategy({
     consumerKey: process.env.LINKEDIN_CLIENT_ID,
     consumerSecret: process.env.LINKEDIN_CLIENT_SECRET,
-    callbackURL: "https://blooming-wave-60960.herokuapp.com/auth/linkedin/callback" || "http://localhost:3000/auth/linkedin/callback"
+    callbackURL: "http://localhost:3000/auth/linkedin/callback" || "https://blooming-wave-60960.herokuapp.com/auth/linkedin/callback"
   },
   function(token, tokenSecret, profile, done) {
     Users().where('linkedin_id', profile.id).first().then(function (user) {
       if(user){
-        // console.log(user);
+        console.log(profile);
       } else {
         Users().insert({
           linkedin_id: profile.id,
