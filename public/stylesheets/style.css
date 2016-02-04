@@ -2,6 +2,7 @@ body {
  padding: 4vh;
  font-family: 'Lato', sans-serif;
  overflow: hidden;
+ /*overflow: auto;*/
  font-weight: 300;
 }
 ::-webkit-scrollbar {
@@ -114,4 +115,7 @@ h6{
     color: #ffffff;
     background-color: #3498db;
     border-color: #3498db;
+}
+.form{
+  margin-top: -75vh;
 }
