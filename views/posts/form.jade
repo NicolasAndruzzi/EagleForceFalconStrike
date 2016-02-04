@@ -1,25 +1,26 @@
 extends ../layout
 
 block content
-  h1 welcome. now #{title}
-  h3 .... #{title}
-  h6 no... seriously.  #{title}
-  form(action="/dashboard" method="post")
-    div.form-group
-      div
-      label(for="subject") Subject
-      div
-      input.form-control(type="text" id="subject" placeholder="Post Subject" name="subject")
-      div
-      label(for="body") Body
-      div
-      input.form-control(type="text" id="body" placeholder="Post Body" name="body")
-      div
-      label(for="cat_name") Category Name
-      div
-      select.form-control(id="cat_name" name="cat_name")
-        option helps
-        option interestings
-        option events
-      div
-    button.btn.btn-primary(type="submit") Submit 
+  div.form
+    h1 welcome. now #{title}
+    h3 .... #{title}
+    h6 no... seriously.  #{title}
+    form(action="/dashboard" method="post")
+      div.form-group
+        div
+        label(for="subject") Subject
+        div
+        input.form-control(type="text" id="subject" placeholder="Post Subject" name="subject")
+        div
+        label(for="body") Body
+        div
+        input.form-control(type="text" id="body" placeholder="Post Body" name="body")
+        div
+        label(for="cat_name") Category Name
+        div
+        select.form-control(id="cat_name" name="cat_name")
+          option helps
+          option interestings
+          option events
+        div
+      button.btn.btn-primary(type="submit") Submit 

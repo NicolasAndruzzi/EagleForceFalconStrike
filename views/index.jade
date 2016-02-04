@@ -7,12 +7,13 @@ block content
         .post-container
           each post, i in users
             if post.cat_name === "helps"
-              +post("post", "info")
+              +post("posts", "info")
                 .post-style-container
                   .heading_container
                     img.profile_pic(src="http://images.fandango.com/MDCsite/images/featured/201411/Strike%20Force%20Eagle%203%20poster_188x188.jpg")
                     h6.user_name= post.first_name + " " + post.last_name
-                    h5.topic= post.subject
+                    h5.topic
+                      a(href="/posts/#{post.id}/show")= post.subject
                   .content-container
                     p.post= post.body
                   .button-container   
@@ -34,7 +35,8 @@ block content
                   .heading_container
                     img.profile_pic(src="http://images.fandango.com/MDCsite/images/featured/201411/Strike%20Force%20Eagle%203%20poster_188x188.jpg")
                     h6.user_name= post.first_name + " " + post.last_name
-                    h5.topic= post.subject
+                    h5.topic
+                      a(href="/posts/#{post.id}/show")= post.subject
                   .content-container
                     p.post= post.body
                   .button-container   
@@ -56,7 +58,8 @@ block content
                   .heading_container
                     img.profile_pic(src="http://images.fandango.com/MDCsite/images/featured/201411/Strike%20Force%20Eagle%203%20poster_188x188.jpg")
                     h6.user_name= post.first_name + " " + post.last_name
-                    h5.topic= post.subject
+                    h5.topic
+                      a(href="/posts/#{post.id}/show")= post.subject
                   .content-container
                     p.post= post.body
                   .button-container   
