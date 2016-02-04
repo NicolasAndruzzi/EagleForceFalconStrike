@@ -31,13 +31,13 @@ block content
                     h5.numberOf 20
             .col-md-12.col-sm-6.col-xs-12
               .post-container-show
-                for comment, i in comments
+                each comment in comments
                   +panel("comment", "info")
                     .post-style-container
                       .heading_container
                         img.profile_pic(src="http://images.fandango.com/MDCsite/images/featured/201411/Strike%20Force%20Eagle%203%20poster_188x188.jpg")
                         if user
-                          h6.user_name= user.first_name + " " + user.last_name
+                          h6.user_name= comment.author
                         h5.topic
                           a(href="/posts/#{post.id}/comment/#{comment.id}/show")= post.subject
                         if profile.id === user.linkedin_id

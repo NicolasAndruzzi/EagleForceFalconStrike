@@ -21,7 +21,7 @@ router.use('/', function(req, res, next) {
 
 router.get('/', function (req, res, next) {
   res.cookie("logged out", "logged out")
-  Users().fullOuterJoin("posts", "users.id", "posts.author_id").then(function (users) {
+  Users().fullOuterJoin("posts", "users.id", "posts.author_id").then(function (users){
     if(req.session){
       var profile = res.locals.user
       console.log(profile);
