@@ -31,3 +31,10 @@ mixin post(heading, style)
        .post-heading= heading
        .panel-body
            block
+           
+mixin comment(heading, style)
+   - var style = (typeof style === 'undefined') ? "default" : style
+   div( class=["comment", "comment-" + style] )
+       .comment-heading= heading
+       .panel-body
+           block

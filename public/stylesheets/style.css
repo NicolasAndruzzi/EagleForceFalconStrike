@@ -52,9 +52,10 @@ p.event_details {
   font-weight: 300;
   /*box-shadow: 2px 2px 1px 1px rgba(29, 31, 29, 0.5);*/
 }
-.panel-heading{
+.panel-heading, .comment-heading{
   background-color: #FF7572;
 }
+
 .post {
   min-height: 142px;
   border: 2px solid #30959A;
@@ -87,7 +88,8 @@ p.index-post {
  padding-top: 5px;
  padding-left: 5px;
  height: auto;
- /*overflow: auto;*/
+ max-height: 80px;
+ overflow: auto;
  display: flex;
 }
 .thumbs-container{
