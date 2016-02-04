@@ -45,8 +45,6 @@ passport.use(new LinkedInStrategy({
     consumerSecret: process.env.LINKEDIN_CLIENT_SECRET,
     // callbackURL: "http://localhost:3000/auth/linkedin/callback" || "https://blooming-wave-60960.herokuapp.com/auth/linkedin/callback"
     callbackURL: "https://blooming-wave-60960.herokuapp.com/auth/linkedin/callback" || "http://localhost:3000/auth/linkedin/callback"
-
-
   },
   function(token, tokenSecret, profile, done) {
     Users().where('linkedin_id', profile.id).first().then(function (user) {
