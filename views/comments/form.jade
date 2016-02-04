@@ -7,15 +7,13 @@ block content
   form(action="/posts/#{post.id}/comment" method="post")
     div.form-group
       div
-      label(for="subject") Subject
+      label(for="subject") post you are commenting on, mo-fo
       div
-      input.form-control(type="text" id="subject" placeholder="Comment Subject" name="subject")
+      input.form-control(type="text" id="subject" value= "RE: #{post.subject}" name="subject" readonly="readonly")
       div
       label(for="body") Body
       div
       input.form-control(type="text" id="body" placeholder="Comment Body" name="body")
-      div
-      input.form-control(type="hidden" id="cat_name" value="comment" name="cat_name")
       div
     button.btn.btn-primary(type="submit") Submit 
   

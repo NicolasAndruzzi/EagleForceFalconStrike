@@ -1,0 +1,25 @@
+extends ../layout 
+
+block content  
+  .row
+      .col-md-12.col-sm-6.col-xs-12
+        .post-container-show
+          if post
+            +panel("post", "info")
+              .post-style-container
+                .heading_container
+                  img.profile_pic(src="http://images.fandango.com/MDCsite/images/featured/201411/Strike%20Force%20Eagle%203%20poster_188x188.jpg")
+                  if user
+                    h6.user_name= user.first_name + " " + user.last_name
+                  h5.topic=post.subject
+                  if profile.id === user.linkedin_id
+                    h5
+                      a.i(href="/posts/#{post.id}/edit") edit comment
+                .content-container
+                  p.post= post.body
+                .button-container   
+                  .thumbs-container
+                    a.i(href='#' class='fa fa-thumbs-o-up fa-2x')
+                    h5.numberOf 13
+                    a.i(href='#' class='fa fa-thumbs-o-down fa-2x')
+                    h5.numberOf 20
