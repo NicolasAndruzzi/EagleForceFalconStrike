@@ -10,6 +10,10 @@ function Posts(){
   return knex('posts');
 }
 
+function Comments(){
+  return knex('comments');
+}
+
 // get route to create a new post
 router.get('/new', function (req, res, next) {
   Users().where("linkedin_id", res.locals.user.id).first().then(function (user){
@@ -25,8 +29,10 @@ router.get('/new', function (req, res, next) {
 router.get('/:post_id/show', function(req, res, next){
   Posts().where('id', req.params.post_id).first().then(function(post){
     Users().where('id', post.author_id).first().then(function(user){
-      var profile = res.locals.user
-      res.render('posts/show', {post: post, user:user, profile: profile})
+      Comments().where('post_id', req.params.post_id).then(function(comments){
+        var profile = res.locals.user
+        res.render('posts/show', {post: post, user:user, profile: profile, comments: comments})
+      })
     })
   })
 })
@@ -53,12 +59,51 @@ router.post('/:post_id/edit', function(req, res, next){
 // deletes post from dashboard
 router.post('/:post_id/delete', function(req, res, next){
   Posts().where('id', req.params.post_id).del().then(function(result){
-    console.log(result)
-    // Users().where('id', post.author_id).del().then(function(user){
       res.redirect('/dashboard');
-    // });
   })
 })
+
+// get comment form page
+router.get('/:post_id/comment', function(req, res, next){
+  Posts().where('id', req.params.post_id).first().then(function(post){
+    Users().where('id', post.author_id).first().then(function(user){
+      var profile = res.locals.user
+      res.render('comments/form', {post: post, user:user, profile: profile, title: "make your comment mo-fo"})
+    })
+  })
+})
+
+//post comment back to /post/:post_id/
+router.post('/:post_id/comment', function (req, res, next) {
+  Posts().where('id', req.params.post_id).first().then(function(post){
+    Users().where('linkedin_id', res.locals.user.id).first().then(function(users){
+      Comments().insert({
+        post_id: req.params.post_id,
+        author_id: users.id,
+        body: req.body.body,
+      }).then(function (posts) {
+        res.redirect('/posts/'+req.params.post_id+'/show')
+      })
+    })
+  })
+})
+
+// get individual comment page
+router.get('/:post_id/comment/:comment_id/show', function(req, res, next){
+  Posts().where('id', req.params.post_id).first().then(function(post){
+    Users().where('id', post.author_id).first().then(function(user){
+      Comments().where('post_id', req.params.post_id).then(function(comments){
+        var profile = res.locals.user
+        res.render('comments/show', {post: post, user:user, profile: profile, comments: comments})
+      })
+    })
+  })
+})
+
+//edit comment get route
+// router.get('/:post_id/comment/:comment_id/edit', function(req, res, next){
+//
+// })
 
 
 module.exports = router;
