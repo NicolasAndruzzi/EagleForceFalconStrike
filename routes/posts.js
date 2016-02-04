@@ -21,5 +21,13 @@ router.get('/new', function (req, res, next) {
   })
 })
 
+router.get('/:post_id/show', function(req, res, next){
+  Posts().where('id', req.params.post_id).first().then(function(post){
+    Users().where('id', post.author_id).first().then(function(user){
+      console.log(user)
+      res.render('posts/show', {post: post, user:user})
+    })
+  })
+})
 
 module.exports = router;
