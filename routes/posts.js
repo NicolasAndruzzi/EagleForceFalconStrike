@@ -53,10 +53,34 @@ router.post('/:post_id/edit', function(req, res, next){
 // deletes post from dashboard
 router.post('/:post_id/delete', function(req, res, next){
   Posts().where('id', req.params.post_id).del().then(function(result){
-    console.log(result)
-    // Users().where('id', post.author_id).del().then(function(user){
       res.redirect('/dashboard');
-    // });
+  })
+})
+
+// get comment form page
+router.get('/:post_id/comment', function(req, res, next){
+  Posts().where('id', req.params.post_id).first().then(function(post){
+    Users().where('id', post.author_id).first().then(function(user){
+      var profile = res.locals.user
+      res.render('posts/comment', {post: post, user:user, profile: profile, title: "make your comment mo-fo"})
+    })
+  })
+})
+
+//post comment back to /post/:post_id/
+router.post('/:post_id/comment', function (req, res, next) {
+  Posts().where('id', req.params.post_id).first().then(function(post){
+    Users().where('linkedin_id', res.locals.user.id).first().then(function(users){
+      // console.log(users);
+      Posts().insert({
+        author_id: users.id,
+        body: req.body.body,
+        cat_name: req.body.cat_name,
+        subject: req.body.subject,
+      }).then(function (posts) {
+        res.redirect('/posts/'+req.params.post_id+'/show')
+      })
+    })
   })
 })
 

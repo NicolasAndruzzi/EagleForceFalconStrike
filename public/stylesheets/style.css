@@ -81,3 +81,9 @@ i{
 .btn-primary {
   margin-right: 5px;
 }
+
+.panel-info>.panel-heading {
+    color: #ffffff;
+    background-color: #3498db;
+    border-color: #3498db;
+}

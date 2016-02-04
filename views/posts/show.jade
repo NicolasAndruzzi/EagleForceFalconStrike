@@ -20,9 +20,41 @@ block content
                 .button-container   
                   .comments-container
                     h5.numberOf 25
-                    a.i(href='/login' class='fa fa-comment-o fa-2x')
+                    if user 
+                      a.i(href="/posts/#{post.id}/comment" class='fa fa-comment-o fa-2x')
+                    else 
+                      a.i(href='/auth/linkedin' class='fa fa-comment-o fa-2x')
                   .thumbs-container
                     a.i(href='#' class='fa fa-thumbs-o-up fa-2x')
                     h5.numberOf 13
                     a.i(href='#' class='fa fa-thumbs-o-down fa-2x')
                     h5.numberOf 20
+        div
+          each thing, i in users
+            if thing.cat_name === "comment"
+              p hello
+        //- .col-md-12.col-sm-6.col-xs-12
+        //-   .post-container
+        //-     each post, i in users
+        //-       if post.cat_name === "comment"
+        //-         +panel("comment", "info")
+        //-           .post-style-container
+        //-             .heading_container
+        //-               img.profile_pic(src="http://images.fandango.com/MDCsite/images/featured/201411/Strike%20Force%20Eagle%203%20poster_188x188.jpg")
+        //-               if user
+        //-                 h6.user_name= user.first_name + " " + user.last_name
+        //-               h5.topic=post.subject
+        //-               if profile.id === user.linkedin_id
+        //-                 h5
+        //-                   a.i(href="/posts/#{post.id}/edit") edit comment
+        //-             .content-container
+        //-               p.post= post.body
+        //-             .button-container   
+        //-               .comments-container
+        //-                 h5.numberOf 25
+        //-                 a.i(href='/login' class='fa fa-comment-o fa-2x')
+        //-               .thumbs-container
+        //-                 a.i(href='#' class='fa fa-thumbs-o-up fa-2x')
+        //-                 h5.numberOf 13
+        //-                 a.i(href='#' class='fa fa-thumbs-o-down fa-2x')
+        //-                 h5.numberOf 20
