@@ -11,20 +11,38 @@ block content
                 .post-style-container
                   .heading_container
                     img.profile_pic(src="http://images.fandango.com/MDCsite/images/featured/201411/Strike%20Force%20Eagle%203%20poster_188x188.jpg")
-                    h6.user_name= post.first_name + " " + post.last_name
+                    h6.user_name
+                      if user 
+                        a(href="/users/#{post.author_id}")= post.first_name + " " + post.last_name
+                      else
+                        a(href="/auth/linkedin")= post.first_name + " " + post.last_name
                     h5.topic
-                      a(href="/posts/#{post.id}/show")= post.subject
+                      if user
+                        a(href="/posts/#{post.id}/show")= post.subject
+                      else 
+                        a(href="/auth/linkedin")= post.subject
                   .content-container
                     p.post= post.body
                   .button-container   
                     .comments-container
                       h5.numberOf 25
-                      a.i(href='/posts/#{post.id}/comment' class='fa fa-comment-o fa-2x')
+                        if user 
+                          a.i(href='/posts/#{post.id}/comment' class='fa fa-comment-o fa-2x')
+                        else 
+                          a.i(href="/auth/linkedin" class='fa fa-comment-o fa-2x')
                     .thumbs-container
-                      a.i(href='#' class='fa fa-thumbs-o-up fa-2x')
-                      h5.numberOf 13
-                      a.i(href='#' class='fa fa-thumbs-o-down fa-2x')
-                      h5.numberOf 20
+                      if user 
+                        a.i(href='#' class='fa fa-thumbs-up')
+                        h5.numberOf 13
+                      else
+                        a.i(href='/auth/linkedin' class='fa fa-thumbs-up')
+                        h5.numberOf 13
+                      if user
+                        a.i(href='#' class='fa fa-thumbs-down')
+                        h5.numberOf 20
+                      else
+                        a.i(href='/auth/linkedin' class='fa fa-thumbs-down')
+                        h5.numberOf 20
     .col-md-4.col-sm-6.col-xs-12
       +panel("Interestings", "active")
         .post-container
@@ -34,20 +52,38 @@ block content
                 .post-style-container
                   .heading_container
                     img.profile_pic(src="http://images.fandango.com/MDCsite/images/featured/201411/Strike%20Force%20Eagle%203%20poster_188x188.jpg")
-                    h6.user_name= post.first_name + " " + post.last_name
+                    h6.user_name
+                      if user 
+                        a(href="/users/#{post.author_id}")= post.first_name + " " + post.last_name
+                      else
+                        a(href="/auth/linkedin")= post.first_name + " " + post.last_name
                     h5.topic
-                      a(href="/posts/#{post.id}/show")= post.subject
+                      if user
+                        a(href="/posts/#{post.id}/show")= post.subject
+                      else 
+                        a(href="/auth/linkedin")= post.subject
                   .content-container
                     p.post= post.body
                   .button-container   
                     .comments-container
                       h5.numberOf 25
-                      a.i(href='/posts/#{post.id}/comment' class='fa fa-comment-o fa-2x')
+                        if user 
+                          a.i(href='/posts/#{post.id}/comment' class='fa fa-comment-o fa-2x')
+                        else 
+                          a.i(href="/auth/linkedin" class='fa fa-comment-o fa-2x')
                     .thumbs-container
-                      a.i(href='#' class='fa fa-thumbs-o-up fa-2x')
-                      h5.numberOf 13
-                      a.i(href='#' class='fa fa-thumbs-o-down fa-2x')
-                      h5.numberOf 20
+                      if user 
+                        a.i(href='#' class='fa fa-thumbs-up')
+                        h5.numberOf 13
+                      else
+                        a.i(href='/auth/linkedin' class='fa fa-thumbs-up')
+                        h5.numberOf 13
+                      if user
+                        a.i(href='#' class='fa fa-thumbs-down')
+                        h5.numberOf 20
+                      else
+                        a.i(href='/auth/linkedin' class='fa fa-thumbs-down')
+                        h5.numberOf 20
     .col-md-4.col-sm-6.col-xs-12
       +panel("Events", "active")
         .post-container

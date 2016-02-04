@@ -1,8 +1,8 @@
 body {
  padding: 4vh;
  font-family: 'Lato', sans-serif;
- overflow: hidden;
- /*overflow: auto;*/
+ /*overflow: hidden;*/
+ overflow: auto;
  font-weight: 300;
 }
 ::-webkit-scrollbar {
@@ -126,5 +126,5 @@ p.event_details {
     border-color: #3498db;
 }
 .form{
-  margin-top: -75vh;
+  margin-top: -70vh;
 }
