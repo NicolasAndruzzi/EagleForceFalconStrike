@@ -1,0 +1,28 @@
+extends ../layout
+
+block content
+  h1 #{title}
+  h3 .... #{title}
+  h6 no... seriously.  #{title}
+  form(action="/posts/#{post.id}/edit" method="post")
+    div.form-group
+      div
+      label(for="subject") Subject
+      div
+      input.form-control(type="text" id="subject" value=post.subject name="subject")
+      div
+      label(for="body") Body
+      div
+      input.form-control(type="text" id="body" value=post.body name="body")
+      div
+      label(for="cat_name") Category Name
+      div
+      select.form-control(id="cat_name" name="cat_name")
+        option= post.cat_name
+        option helps
+        option interestings
+        option events
+      div
+    button.btn.btn-primary(type="submit") Submit 
+  form(action="/posts/#{post.id}/delete" method="post")
+    button.btn.btn-primary(type="submit" action="/posts/#{post.id}/delete" method="post") Delete Post

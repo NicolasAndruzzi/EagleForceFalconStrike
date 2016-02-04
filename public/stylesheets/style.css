@@ -77,3 +77,7 @@ i{
 .actions{
  float: right;
 }
+
+.btn-primary {
+  margin-right: 5px;
+}
