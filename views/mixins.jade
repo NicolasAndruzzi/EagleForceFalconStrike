@@ -28,6 +28,6 @@ mixin panel(heading, style)
 mixin post(heading, style)
    - var style = (typeof style === 'undefined') ? "default" : style
    div( class=["post", "post-" + style] )
-       .panel-heading= heading
+       .post-heading= heading
        .panel-body
            block
