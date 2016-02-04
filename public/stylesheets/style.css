@@ -55,7 +55,9 @@ p.event_details {
 .panel-heading, .comment-heading{
   background-color: #FF7572;
 }
-
+.post-heading {
+  background-color: #30959A;
+}
 .post {
   min-height: 142px;
   border: 2px solid #30959A;
@@ -69,9 +71,6 @@ p.event_details {
   border-radius: 3px;
   margin-bottom: 5px;
   margin-top: 5px;
-}
-.post-heading {
-  background-color: #30959A;
 }
 p.post {
   border: 0;
