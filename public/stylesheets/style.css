@@ -36,7 +36,7 @@ h6{
   font-family: 'Indie Flower', cursive;
   font-size: 3vh;
   color: black;
-  box-shadow: -2px 2px 3px 4px rgba(61 , 64, 61, 0.5);
+  /*box-shadow: 2px 2px 1px 1px rgba(29, 31, 29, 0.5);*/
 }
 .panel-heading{
   border-color: black;
