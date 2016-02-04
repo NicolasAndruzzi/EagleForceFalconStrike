@@ -2,7 +2,7 @@ body {
  padding: 4vh;
  font-family: 'Lato', sans-serif;
  /*overflow: hidden;*/
- overflow: auto;
+ /*overflow: auto;*/
  font-weight: 300;
 }
 ::-webkit-scrollbar {
@@ -56,9 +56,11 @@ p.event_details {
   background-color: #FF7572;
 }
 .post {
+  min-height: 142px;
   border: 2px solid #30959A;
   border-radius: 3px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+  margin-top: 5px;
 }
 .post-heading {
   background-color: #30959A;
@@ -133,10 +135,9 @@ p.post {
   margin-top: -70vh;
 }
 .panel-body {
-  margin-top: -2.5px;
-  border: 3px solid #FF7572;
-  border-radius: 4px;
+  padding: 0;
 }
 .post > .panel-body {
   border: 0;
+  padding: 5px;
 }
