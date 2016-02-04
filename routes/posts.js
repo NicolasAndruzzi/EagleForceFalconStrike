@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var knex = require('../db/knex');
+var Promise = require('bluebird');
 
 function Users(){
   return knex('users');
@@ -26,14 +27,21 @@ router.get('/new', function (req, res, next) {
   })
 })
 
-// get individual post
 router.get('/:post_id/show', function(req, res, next){
   Posts().where('id', req.params.post_id).first().then(function(post){
     Users().where('id', post.author_id).first().then(function(user){
-      Comments().where('post_id', req.params.post_id).then(function(comments){
-        var profile = res.locals.user
-        res.render('posts/show', {post: post, user:user, profile: profile, comments: comments})
-      })
+      Comments().where('post_id', post.id).then(function(comments){
+        Promise.all(comments.map(function (comment) {
+          return Users().where('id', comment.author_id).first().then(function (user) {
+            var author = user.first_name + " " + user.last_name;
+            comment.author = author;
+            return comment;
+          })
+        })).then(function (comments) {
+          var profile = res.locals.user
+          res.render('posts/show', {post: post, user:user, profile: profile, comments: comments})
+        })
+        })
     })
   })
 })
