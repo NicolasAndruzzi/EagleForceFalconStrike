@@ -49,28 +49,6 @@ router.get('/:post_id/show', function(req, res, next){
   })
 })
 
-// router.get('/:post_id/show', function(req, res, next){
-//   Posts().where('id', req.params.post_id).first().then(function(post){
-//     Users().where('id', post.author_id).first().then(function(user){
-//       Comments().where('post_id', post.id).then(function(comments){
-//         Users().select().first().then(function (allUsers) {
-//           Promise.all(comments.map(function (comment) {
-//             return Users().where('id', comment.author_id).first().then(function (user) {
-//               var author = user.first_name + " " + user.last_name;
-//               comment.author = author;
-//               return comment;
-//             })
-//           })).then(function (comments) {
-//             var profile = res.locals.user
-//             res.render('posts/show', {post: post, user:user, profile: profile, comments: comments, allUsers: allUsers})
-//           })
-//           })
-//     })
-//   })
-// })
-// })
-
-
 // edit individual post
 router.get('/:post_id/edit', function(req, res, next){
   Posts().where('id', req.params.post_id).first().then(function(post){
