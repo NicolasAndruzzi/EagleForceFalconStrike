@@ -18,6 +18,7 @@
     "passport": "^0.3.2",
     "passport-linkedin": "^1.0.0",
     "pg": "^4.4.4",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "unirest": "^0.4.2"
   }
 }

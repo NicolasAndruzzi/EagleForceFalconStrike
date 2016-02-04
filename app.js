@@ -8,7 +8,7 @@ var session = require('cookie-session')
 require('dotenv').load()
 var passport = require('passport');
 var LinkedInStrategy = require('passport-linkedin').Strategy
-
+var unirest = require('unirest');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var dashboard = require('./routes/dashboard');
@@ -39,6 +39,8 @@ app.use(session({ keys: [process.env.SESSION_KEY1, process.env.SESSION_KEY2]}))
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+
 
 passport.use(new LinkedInStrategy({
     consumerKey: process.env.LINKEDIN_CLIENT_ID,
