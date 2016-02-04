@@ -27,9 +27,9 @@ block content
                     .comments-container
                       h5.numberOf 25
                         if user 
-                          a.i(href='/posts/#{post.id}/comment' class='fa fa-comment-o fa-2x')
+                          a.i(href='/posts/#{post.id}/comment' class='fa fa-comment-o')
                         else 
-                          a.i(href="/auth/linkedin" class='fa fa-comment-o fa-2x')
+                          a.i(href="/auth/linkedin" class='fa fa-comment-o')
                     .thumbs-container
                       if user 
                         a.i(href='#' class='fa fa-thumbs-up')
@@ -68,9 +68,9 @@ block content
                     .comments-container
                       h5.numberOf 25
                         if user 
-                          a.i(href='/posts/#{post.id}/comment' class='fa fa-comment-o fa-2x')
+                          a.i(href='/posts/#{post.id}/comment' class='fa fa-comment-o')
                         else 
-                          a.i(href="/auth/linkedin" class='fa fa-comment-o fa-2x')
+                          a.i(href="/auth/linkedin" class='fa fa-comment-o')
                     .thumbs-container
                       if user 
                         a.i(href='#' class='fa fa-thumbs-up')
@@ -91,7 +91,7 @@ block content
             +post("post", "info")
               .post-style-container
                 .heading_container
-                  img.profile_pic(src="http://images.fandango.com/MDCsite/images/featured/201411/Strike%20Force%20Eagle%203%20poster_188x188.jpg")
+                  img.profile_pic(src="https://upload.wikimedia.org/wikipedia/commons/7/73/Meetup_Logo_2015.png")
                   h6.user_name= event.name
                   if event.venue
                     p.event_details= event.venue.name
