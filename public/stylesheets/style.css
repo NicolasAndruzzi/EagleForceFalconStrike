@@ -63,6 +63,13 @@ p.event_details {
   margin-bottom: 5px;
   margin-top: 5px;
 }
+.comment {
+  margin: 0 auto;
+  border: 2px solid #FF7572;
+  border-radius: 3px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
 .post-heading {
   background-color: #30959A;
 }
@@ -146,5 +153,8 @@ p.index-post {
 }
 .post > .panel-body {
   border: 0;
+  padding: 5px;
+}
+.comment > .panel-body {
   padding: 5px;
 }
