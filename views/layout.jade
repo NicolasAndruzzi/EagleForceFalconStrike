@@ -17,13 +17,13 @@ html(lang="en")
         +nav_item( "/" ) Home
         +nav_item( "/dashboard/about" ) About
         if user
-          +nav_item( "/auth/logout" ) Logout
           +nav_item( "/posts/new" ) Add A Post
           +nav_item( "/users" ) All Users
+          +nav_item( "/auth/logout" ) Logout
         else 
-          +nav_item( "/auth/linkedin" ) Login
           +nav_item( "/auth/linkedin" ) Add A Post
           +nav_item( "/auth/linkedin" ) All Users
+          +nav_item( "/auth/linkedin" ) Login
       script( src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js' )
       script( src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js' )
       block content 
