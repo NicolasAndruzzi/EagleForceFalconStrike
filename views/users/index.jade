@@ -1,27 +1,3 @@
 extends ../layout
 
 block content
-  h1= title
-  p Welcome to #{title} 
-  table 
-    thead 
-      tr
-        th id
-        th user name
-        th first name
-        th last name 
-        th score 
-        th title
-        th Admin
-        th Github URL
-    tbody 
-    for user in users
-      tr 
-        td= user.id
-        td: a(href='/users/#{user.id}')= user.user_name
-        td= user.first_name
-        td= user.last_name
-        td= user.score
-        td= user.title
-        td= user.is_admin
-        td= user.github_url
