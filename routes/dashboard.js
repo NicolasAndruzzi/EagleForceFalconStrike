@@ -37,6 +37,7 @@ router.post('/', function (req, res, next) {
   })
 })
 
+
 // get rout to the "about" page
 router.get('/about', function (req, res, next) {
   res.render('about')

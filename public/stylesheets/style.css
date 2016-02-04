@@ -105,3 +105,7 @@ h6{
 .actions{
  float: right;
 }
+
+.btn-primary {
+  margin-right: 5px;
+}
