@@ -24,3 +24,5 @@ block content
         option events
       div
     button.btn.btn-primary(type="submit") Submit 
+  form(action="/posts/#{post.id}/delete" method="post")
+    button.btn.btn-primary(type="submit" action="/posts/#{post.id}/delete" method="post") Delete Post

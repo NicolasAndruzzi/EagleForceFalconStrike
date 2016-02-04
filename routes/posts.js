@@ -42,11 +42,21 @@ router.get('/:post_id/edit', function(req, res, next){
 })
 
 // updates edited post to dashboard
-router.post('/:post_id/edit', function(req, res){
+router.post('/:post_id/edit', function(req, res, next){
   Posts().where('id', req.params.post_id).update(req.body).then(function(post){
     Users().where('id', post.author_id).first().then(function(user){
       res.redirect('/dashboard');
     });
+  })
+})
+
+// deletes post from dashboard
+router.post('/:post_id/delete', function(req, res, next){
+  Posts().where('id', req.params.post_id).del().then(function(result){
+    console.log(result)
+    // Users().where('id', post.author_id).del().then(function(user){
+      res.redirect('/dashboard');
+    // });
   })
 })
 
