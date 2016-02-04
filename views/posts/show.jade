@@ -2,8 +2,8 @@ extends ../layout
 
 block content  
   .row
-      .col-md-4.col-sm-6.col-xs-12
-        .post-container
+      .col-md-12.col-sm-6.col-xs-12
+        .post-container-show
           if post
             +panel("post", "info")
               .post-style-container
@@ -12,6 +12,9 @@ block content
                   if user
                     h6.user_name= user.first_name + " " + user.last_name
                   h5.topic=post.subject
+                  if profile.id === user.linkedin_id
+                    h5
+                      a.i(href="/posts/#{post.id}/edit") edit post 
                 .content-container
                   p.post= post.body
                 .button-container   
