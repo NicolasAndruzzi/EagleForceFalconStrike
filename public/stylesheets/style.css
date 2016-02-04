@@ -15,15 +15,31 @@ h5{
 h6{
  margin: 0;
 }
-i{
-
+.man{
+  margin-left: -12vw;
+  margin-top: 50vh;
+  height: 20vh;
 }
 .navbar-nav{
  float: right;
+ background-color: black;
+}
+.navbar{
+ background-color: black;
 }
 .post-style-container{
  display: flex;
  flex-direction: column;
+}
+.panel-active{
+  border-color: black;
+  font-family: 'Indie Flower', cursive;
+  font-size: 3vh;
+  color: black;
+}
+.panel-heading{
+  border-color: black;
+  background-color: #BFB8BF;
 }
 .post-container{
  height: 70vh;
@@ -66,6 +82,7 @@ i{
 .row{
  display: flex;
  justify-content: center;
+ margin-top: -70vh;
 }
 .input{
  padding: 5vh;

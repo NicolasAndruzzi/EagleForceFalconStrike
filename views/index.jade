@@ -3,7 +3,7 @@ extends layout
 block content
   .row
       .col-md-4.col-sm-6.col-xs-12
-        +panel("Helps", "info")
+        +panel("Helps", "active")
           .post-container
             each post, i in users
               if post.cat_name === "helps"
@@ -25,7 +25,7 @@ block content
                         a.i(href='#' class='fa fa-thumbs-o-down fa-2x')
                         h5.numberOf 20
       .col-md-4.col-sm-6.col-xs-12
-        +panel("Interestings", "info")
+        +panel("Interestings", "active")
           .post-container
             each post, i in users
               if post.cat_name === "interestings"
@@ -47,7 +47,7 @@ block content
                         a.i(href='#' class='fa fa-thumbs-o-down fa-2x')
                         h5.numberOf 20
       .col-md-4.col-sm-6.col-xs-12
-        +panel("Events", "info")
+        +panel("Events", "active")
           .post-container
             each post, i in users
               if post.cat_name === "events"
