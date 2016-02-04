@@ -9,7 +9,7 @@ body {
    display: none;
 }
 a {
- color: #00B7FF ;
+ color: black ;
 }
 ul.nav a:hover {
    color: #FFA04F !important;
