@@ -18,7 +18,8 @@ function Comments(){
 router.get('/new', function (req, res, next) {
   Users().where("linkedin_id", res.locals.user.id).first().then(function (user){
     if(user){
-    res.render('posts/form', {title: "add a post mo-fo", user: user})
+      var profile = res.locals.user
+      res.render('posts/form', {title: "add a post mo-fo", user: user, profile: profile})
     } else {
       res.redirect('/auth/linkedin')
     }
