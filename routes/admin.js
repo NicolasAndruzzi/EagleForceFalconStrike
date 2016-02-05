@@ -14,9 +14,32 @@ function Comments(){
 }
 
 
-router.get('/', function (req, res, next) {
+router.use('/', function (req, res, next) {
+  var linkedinID = req.session.passport.user.id
+  Users().where('linkedin_id', linkedinID).first().then(function (user) {
+    if (user.is_admin){
+      next()
+    } else{
+      res.redirect("/dashboard")
+    }
+  })
+})
 
-  res.send("admin page");
+router.get('/', function(req, res, next) {
+  Users().select().then(function(users) {
+    Posts().select().then(function(posts) {
+      Posts().where('cat_name', 'helps').then(function(helps) {
+        Posts().where('cat_name', 'interestings').then(function(interestings) {
+          var interestingsNumber = Number(interestings.length);
+          var helpsNumber = Number(helps.length);
+          var userNumber = Number(users.length);
+          var profile = res.locals.user;
+          res.render('admin', {profile: profile, users: users, posts: posts, userNumber: userNumber, helpsNumber: helpsNumber,
+            interestingsNumber: interestingsNumber})
+        })
+      })
+    })
+  })
 })
 // admin route for Super Admin
 // router.get('/admin', function (req, res, next) {
@@ -41,7 +64,7 @@ router.get('/', function (req, res, next) {
 //     })
 //   })
 // })
-// =======
+
 
 
 
