@@ -168,8 +168,6 @@ router.get('/:post_id/downvote', function (req, res, next) {
   })
 })
 
-
-
 // upvote a comment on post show page
 router.get('/:post_id/comment/:comment_id/upvote', function (req, res, next) {
   Comments().where('post_id', req.params.post_id).andWhere('id', req.params.comment_id).first().then(function (results) {
