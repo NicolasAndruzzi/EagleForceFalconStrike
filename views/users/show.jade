@@ -1,5 +1,89 @@
 extends ../layout
 
 block content
-  div.form
-    h1 This is #{user.first_name} #{user.last_name}'s profile page
+  .row 
+    h2 This is the profile page for #{user.first_name} #{user.last_name}
+    br
+  .col-md-4.col-sm-6.col-xs-12
+    +panel("Helps", "active")
+      .post-container
+        each post in posts
+          if post.cat_name === "helps"
+            +post("", "info")
+              .post-style-container
+                .heading_container
+                  img.profile_pic(src="http://images.fandango.com/MDCsite/images/featured/201411/Strike%20Force%20Eagle%203%20poster_188x188.jpg")
+                  h6.user_name
+                    if user 
+                      a(href="/users/#{post.author_id}")= user.first_name + " " + user.last_name
+                    else
+                      a(href="/auth/linkedin")= user.first_name + " " + user.last_name
+                  h5.topic
+                    if user
+                      a(href="/posts/#{post.id}/show")= post.subject
+                    else 
+                      a(href="/auth/linkedin")= post.subject
+                .content-container
+                  p.index-post= post.body
+                .button-container   
+                  .comments-container
+                    h5.numberOf 25
+                      if user 
+                        a.i(href='/posts/#{post.id}/comment' class='fa fa-comment-o')
+                      else 
+                        a.i(href="/auth/linkedin" class='fa fa-comment-o')
+                  .thumbs-container
+                    if user 
+                      a.i(href='#' class='fa fa-thumbs-up')
+                      h5.numberOf 13
+                    else
+                      a.i(href='/auth/linkedin' class='fa fa-thumbs-up')
+                      h5.numberOf 13
+                    if user
+                      a.i(href='#' class='fa fa-thumbs-down')
+                      h5.numberOf 20
+                    else
+                      a.i(href='/auth/linkedin' class='fa fa-thumbs-down')
+                      h5.numberOf 20
+  .col-md-4.col-sm-6.col-xs-12
+    +panel("Interestings", "active")
+      .post-container
+        each post in posts
+          if post.cat_name === "interestings"
+            +post("", "info")
+              .post-style-container
+                .heading_container
+                  img.profile_pic(src="http://images.fandango.com/MDCsite/images/featured/201411/Strike%20Force%20Eagle%203%20poster_188x188.jpg")
+                  h6.user_name
+                    if user 
+                      a(href="/users/#{post.author_id}")= user.first_name + " " + user.last_name
+                    else
+                      a(href="/auth/linkedin")= user.first_name + " " + user.last_name
+                  h5.topic
+                    if user
+                      a(href="/posts/#{post.id}/show")= post.subject
+                    else 
+                      a(href="/auth/linkedin")= post.subject
+                .content-container
+                  p.post= post.body
+                .button-container   
+                  .comments-container
+                    h5.numberOf 25
+                      if user 
+                        a.i(href='/posts/#{post.id}/comment' class='fa fa-comment-o')
+                      else 
+                        a.i(href="/auth/linkedin" class='fa fa-comment-o')
+                  .thumbs-container
+                    if user 
+                      a.i(href='#' class='fa fa-thumbs-up')
+                      h5.numberOf 13
+                    else
+                      a.i(href='/auth/linkedin' class='fa fa-thumbs-up')
+                      h5.numberOf 13
+                    if user
+                      a.i(href='#' class='fa fa-thumbs-down')
+                      h5.numberOf 20
+                    else
+                      a.i(href='/auth/linkedin' class='fa fa-thumbs-down')
+                      h5.numberOf 20
+    
