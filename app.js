@@ -14,6 +14,7 @@ var users = require('./routes/users');
 var dashboard = require('./routes/dashboard');
 var posts = require('./routes/posts');
 var authRoutes = require('./routes/auth');
+var admin = require('./routes/admin')
 // var login = require('./routes/login');
 
 var app = express();
@@ -83,6 +84,7 @@ app.use(function (req, res, next) {
 
 app.use('/', routes);
 app.use('/auth', authRoutes);
+app.use('/admin', admin);
 // app.use('/login', login);
 app.use('/dashboard', dashboard)
 app.use('/users', users);
