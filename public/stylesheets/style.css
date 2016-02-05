@@ -168,8 +168,6 @@ p.post {
 .footer {
   display: flex;
   justify-content: center;
-  width: 81vw;
-  margin-left: 7vw;
 }
 .navbar-default .navbar-brand {
   color: white;
