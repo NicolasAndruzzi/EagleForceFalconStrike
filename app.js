@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var session = require('cookie-session')
 require('dotenv').load()
 var passport = require('passport');
+var expressValidator = require('express-validator'),
 var LinkedInStrategy = require('passport-linkedin').Strategy
 var unirest = require('unirest');
 var routes = require('./routes/index');
@@ -14,7 +15,6 @@ var users = require('./routes/users');
 var dashboard = require('./routes/dashboard');
 var posts = require('./routes/posts');
 var authRoutes = require('./routes/auth');
-// var login = require('./routes/login');
 
 var app = express();
 
@@ -32,6 +32,8 @@ app.set('view engine', 'jade');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
+app.use(expressValidator([options]));
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -39,8 +41,6 @@ app.use(session({ keys: [process.env.SESSION_KEY1, process.env.SESSION_KEY2]}))
 
 app.use(passport.initialize());
 app.use(passport.session());
-
-
 
 passport.use(new LinkedInStrategy({
     consumerKey: process.env.LINKEDIN_CLIENT_ID,
@@ -83,7 +83,6 @@ app.use(function (req, res, next) {
 
 app.use('/', routes);
 app.use('/auth', authRoutes);
-// app.use('/login', login);
 app.use('/dashboard', dashboard)
 app.use('/users', users);
 app.use('/posts', posts);
