@@ -1,40 +1,40 @@
 extends layout
 
-//- block content
-//-   .row
-//-     h4 Admin is
-//-       a(href="/dashboard/admin")= profile.displayName
-//-       br
-//-     //- div.form
-//-     //- table 
-//-     //-  thead 
-//-     //-    tr
-//-     //-      th id
-//-     //-      th first name
-//-     //-      th last name 
-//-     //-      th score 
-//-     //-      th title
-//-     //-      th Admin
-//-     //-  tbody 
-//-     //-  for user in users
-//-     //-    tr 
-//-     //-      td= user.id
-//-     //-      td: a(href='/users/#{user.id}')= user.first_name
-//-     //-      td: a(href='/users/#{user.id}')= user.last_name
-//-     //-      td= user.score
-//-     //-      td= user.title
-//-     //-      td= user.is_admin
-//-   .col-md-4.col-sm-6.col-xs-12
-//-    +panel("Helps", "active")
-//-      .post-container
-//-        p Number of Help Posts: #{helpsNumber}
-//-   .col-md-4.col-sm-6.col-xs-12
-//-    +panel("Interestings", "active")
-//-      .post-container
-//-        p Number of Interesting Posts: #{interestingsNumber}
-//-   .col-md-4.col-sm-6.col-xs-12
-//-    +panel("Users", "active")
-//-      .post-container
-//-        p Number of Users: #{userNumber}
-//-        p See all users: here
-//-   
+block content
+  .row
+    h4 Admin is
+      a(href="/dashboard/admin")= profile.displayName
+      br
+    //- div.form
+    //- table 
+    //-  thead 
+    //-    tr
+    //-      th id
+    //-      th first name
+    //-      th last name 
+    //-      th score 
+    //-      th title
+    //-      th Admin
+    //-  tbody 
+    //-  for user in users
+    //-    tr 
+    //-      td= user.id
+    //-      td: a(href='/users/#{user.id}')= user.first_name
+    //-      td: a(href='/users/#{user.id}')= user.last_name
+    //-      td= user.score
+    //-      td= user.title
+    //-      td= user.is_admin
+  .col-md-4.col-sm-6.col-xs-12
+   +panel("Helps", "active")
+     .post-container
+       p Number of Help Posts: #{helpsNumber}
+  .col-md-4.col-sm-6.col-xs-12
+   +panel("Interestings", "active")
+     .post-container
+       p Number of Interesting Posts: #{interestingsNumber}
+  .col-md-4.col-sm-6.col-xs-12
+   +panel("Users", "active")
+     .post-container
+       p Number of Users: #{userNumber}
+       p See all users: here
+  
