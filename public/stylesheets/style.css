@@ -168,7 +168,7 @@ p.post {
 .errors{
   color: red;
   font-weight: 400;
-
+}
 div.about{
   text-align: center;
 }
@@ -211,5 +211,4 @@ tr.users{
 .navbar-default .navbar-brand:hover {
     color: #FFA04F;
     text-decoration: underline;
->>>>>>> master
 }
