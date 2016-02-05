@@ -6,6 +6,10 @@ block content
     h3 .... #{title}
     h6 no... seriously.  #{title}
     form(action="/posts/#{post.id}/edit" method="post")
+      div.errors
+          if errors
+            for error in errors  
+              p.errorMessage= error
       div.form-group
         div
         label(for="subject") Subject

@@ -18,7 +18,6 @@ var admin = require('./routes/admin')
 // var login = require('./routes/login');
 
 var app = express();
-
 var knex = require('./db/knex');
 
 function Users(){

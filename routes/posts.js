@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var knex = require('../db/knex');
 var Promise = require('bluebird');
+var validate = require('../lib/validations');
 
 function Users(){
   return knex('users');
@@ -61,11 +62,17 @@ router.get('/:post_id/edit', function(req, res, next){
 
 // updates edited post to dashboard
 router.post('/:post_id/edit', function(req, res, next){
+  var errors = validate(req.body)
+  var profile = res.locals.user
+    if(errors.length){
+      res.render('posts/edit', {post: {id: req.params.post_id}, info: req.body, errors: errors, profile: profile, title: "correctly edit your post, mo-fo"})
+    } else {
   Posts().where('id', req.params.post_id).update(req.body).then(function(post){
     Users().where('id', post.author_id).first().then(function(user){
       res.redirect('/dashboard');
-    });
-  })
+      });
+    })
+  }
 })
 
 // deletes post from dashboard
