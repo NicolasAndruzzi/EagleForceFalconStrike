@@ -21,7 +21,7 @@ block content
                 .comments-container
                   h5.numberOf #{commentCount}
                   if user 
-                    a.i(href="/posts/#{post.id}/comment" class='fa fa-comment-o fa-2x')
+                    a.i(href="/posts/#{post.id}/comment" class='fa fa-comment-o fa-2x') +
                   else 
                     a.i(href='/auth/linkedin' class='fa fa-comment-o fa-2x')
                 .thumbs-container
