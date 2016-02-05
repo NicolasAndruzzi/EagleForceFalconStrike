@@ -96,5 +96,6 @@ block content
                   if event.venue
                     p.event_details= event.venue.name
                     p.event_details= event.venue.address_1
+                    p.event_details= Date(event.time)
                   a(href=event.event_url)
                     h6 Click for Details!
