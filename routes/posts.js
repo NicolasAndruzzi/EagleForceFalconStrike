@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var knex = require('../db/knex');
 var Promise = require('bluebird');
-var validate = require('../lib/validations')
 
 function Users(){
   return knex('users');
@@ -168,8 +167,6 @@ router.get('/:post_id/downvote', function (req, res, next) {
     })
   })
 })
-
-
 
 // upvote a comment on post show page
 router.get('/:post_id/comment/:comment_id/upvote', function (req, res, next) {
