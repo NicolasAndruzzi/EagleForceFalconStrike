@@ -29,6 +29,7 @@ router.get('/new', function (req, res, next) {
 
 router.get('/:post_id/show', function(req, res, next){
   Posts().where('id', req.params.post_id).first().then(function(post){
+    console.log(post);
     Users().where('id', post.author_id).first().then(function(user){
       Comments().where('post_id', post.id).then(function(comments){
         Promise.all(comments.map(function (comment) {
@@ -38,12 +39,16 @@ router.get('/:post_id/show', function(req, res, next){
             return comment;
           })
         })).then(function (comments) {
-          var profile = res.locals.user
-          res.render('posts/show', {post: post, user:user, profile: profile, comments: comments})
-        })
-        })
-    })
-  })
+          Users().leftJoin("comments", "comments.author_id", "users.id").where("post_id", post.id).then(function (results) {
+                console.log(comments)
+                      var profile = res.locals.user
+                      var commentCount = comments.length
+                      res.render('posts/show', {post: post, user:user, profile: profile, comments: comments, commentCount: commentCount, results:results})
+                    })
+                  })
+                })
+              })
+            })
 })
 
 // edit individual post
@@ -114,8 +119,7 @@ router.get('/:post_id/comment/:comment_id/edit', function(req, res, next){
   Posts().where('id', req.params.post_id).first().then(function(post){
     Users().where('id', post.author_id).first().then(function(user){
       Comments().where('id', req.params.comment_id).first().then(function(comment){
-        console.log('*****COMMENTID******');
-        console.log(comment);
+        console.log(comment)
         var profile = res.locals.user
         res.render('comments/edit', {post: post, user:user, profile: profile, comment: comment, title: "edit your comment mo-fo"})
       })
@@ -127,10 +131,7 @@ router.get('/:post_id/comment/:comment_id/edit', function(req, res, next){
 router.post('/:post_id/comment/:comment_id/', function (req, res, next) {
   Posts().where('id', req.params.post_id).first().then(function(post){
     Users().where('linkedin_id', res.locals.user.id).first().then(function(user){
-      console.log('*******THE COMMENT IS********');
-      console.log(req.params.comment_id);
       Comments().where('id', req.params.comment_id).update(req.body).then(function (comment) {
-        console.log(comment);
         res.redirect('/posts/'+req.params.post_id+'/show')
       })
     })

@@ -19,17 +19,15 @@ router.get('/', function (req, res, next) {
  })
 })
 
+
 // get route that will display individual user profile page
 router.get('/:id', function(req, res, next){
- Users().where('id', req.params.id).first().then(function (user){
-   var profile = res.locals.user
-   res.render('users/show', {user: user, profile:profile})
- })
+  Users().where('id', req.params.id).first().then(function (user){
+    Posts().where('author_id', user.id).then(function (posts) {
+      var profile = res.locals.user
+      res.render('users/show', {user: user, profile:profile, posts:posts})
+    })
+  })
 })
-
-// // individual user profile page
-// router.get('/show', function (req, res, next) {
-//
-// })
 
 module.exports = router;

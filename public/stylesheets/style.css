@@ -101,6 +101,7 @@ p.index-post {
  max-height: 80px;
  overflow: auto;
  display: flex;
+ font-size: 18px; 
 }
 .thumbs-container{
  display: flex;
