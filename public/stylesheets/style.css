@@ -57,6 +57,10 @@ p.event_details {
 }
 .post-heading {
   background-color: #30959A;
+  height: 28px;
+}
+.comment-heading {
+  height: 28px;
 }
 .post {
   min-height: 142px;
