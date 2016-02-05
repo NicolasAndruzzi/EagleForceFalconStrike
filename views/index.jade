@@ -21,10 +21,10 @@ block content
                       h5.numberOf 25
                       a.i(href='/posts/#{post.id}/comment' class='fa fa-comment-o fa-2x')
                     .thumbs-container
-                      a.i(href='#' class='fa fa-thumbs-o-up fa-2x')
-                      h5.numberOf 13
-                      a.i(href='#' class='fa fa-thumbs-o-down fa-2x')
-                      h5.numberOf 20
+                      a.i(href='/dashboard/post/#{post.id}/upvote' class='fa fa-thumbs-o-up fa-2x')
+                      h5.numberOf #{post.upvotes}
+                      a.i(href='/dashboard/post/#{post.id}/downvote' class='fa fa-thumbs-o-down fa-2x')
+                      h5.numberOf #{post.downvotes}
     .col-md-4.col-sm-6.col-xs-12
       +panel("Interestings", "active")
         .post-container
@@ -44,10 +44,10 @@ block content
                       h5.numberOf 25
                       a.i(href='/posts/#{post.id}/comment' class='fa fa-comment-o fa-2x')
                     .thumbs-container
-                      a.i(href='#' class='fa fa-thumbs-o-up fa-2x')
-                      h5.numberOf 13
-                      a.i(href='#' class='fa fa-thumbs-o-down fa-2x')
-                      h5.numberOf 20
+                      a.i(href='/dashboard/post/#{post.id}/upvote' class='fa fa-thumbs-o-up fa-2x')
+                      h5.numberOf #{post.upvotes}
+                      a.i(href='/dashboard/post/#{post.id}/downvote' class='fa fa-thumbs-o-down fa-2x')
+                      h5.numberOf #{post.downvotes}
     .col-md-4.col-sm-6.col-xs-12
       +panel("Events", "active")
         .post-container

@@ -9,6 +9,9 @@ function Users(){
 function Posts(){
   return knex('posts');
 }
+function Comments(){
+  return knex('comments');
+}
 var events
 
 router.use('/', function(req, res, next) {
@@ -51,5 +54,65 @@ router.get('/about', function (req, res, next) {
   res.render('about')
 })
 
+router.get('/post/:post_id/upvote', function (req, res, next) {
+  Posts().where('id', req.params.post_id).first().then(function (results) {
+    console.log(results);
+    var votes = results.upvotes;
+    console.log(votes);
+    console.log("***********");
+    votes += 1;
+    console.log(votes);
+    Posts().where('id', req.params.post_id).update({
+      upvotes: votes
+    }).then(function (votes) {
+      res.redirect('/')
+    })
+    })
+})
+router.get('/post/:post_id/downvote', function (req, res, next) {
+  Posts().where('id', req.params.post_id).first().then(function (results) {
+    console.log(results);
+    var votes = results.downvotes;
+    console.log(votes);
+    console.log("***********");
+    votes += 1;
+    console.log(votes);
+    Posts().where('id', req.params.post_id).update({
+      downvotes: votes
+    }).then(function (votes) {
+      res.redirect('/')
+    })
+    })
+})
+router.get('/post/:post_id/upvote/show', function (req, res, next) {
+  Comments().where('id', req.params.post_id).first().then(function (results) {
+    console.log(results);
+    var votes = results.upvotes;
+    console.log(votes);
+    console.log("***********");
+    votes += 1;
+    console.log(votes);
+    Comments().where('id', req.params.post_id).update({
+      upvotes: votes
+    }).then(function (votes) {
+      res.redirect('/posts/'+req.params.post_id+'/show')
+    })
+    })
+})
+router.get('/post/:post_id/downvote/show', function (req, res, next) {
+  Comments().where('id', req.params.post_id).first().then(function (results) {
+    console.log(results);
+    var votes = results.downvotes;
+    console.log(votes);
+    console.log("***********");
+    votes += 1;
+    console.log(votes);
+    Comments().where('id', req.params.post_id).update({
+      downvotes: votes
+    }).then(function (votes) {
+      res.redirect('/posts/'+req.params.post_id+'/show')
+    })
+    })
+})
 
 module.exports = router;
