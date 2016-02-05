@@ -80,9 +80,9 @@ p.post {
   border: 0;
   display: inline-block;
 }
-p.index-post {
+/*p.index-post {
   font-size: 12px;
-}
+}*/
 .post-container{
  height: 70vh;
  overflow: auto;
@@ -98,10 +98,11 @@ p.index-post {
  padding-top: 5px;
  padding-left: 5px;
  height: auto;
+ min-height: 80px;
  max-height: 80px;
  overflow: auto;
  display: flex;
- font-size: 18px; 
+ font-size: 15px;
 }
 .thumbs-container{
  display: flex;

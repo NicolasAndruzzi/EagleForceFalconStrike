@@ -5,7 +5,7 @@ block content
     .col-md-12.col-sm-6.col-xs-12
       .post-container-show
         if post
-          +panel("post", "info")
+          +post("post", "info")
             .post-style-container
               .heading_container
                 img.profile_pic(src="http://images.fandango.com/MDCsite/images/featured/201411/Strike%20Force%20Eagle%203%20poster_188x188.jpg")
@@ -32,7 +32,7 @@ block content
           .col-md-12.col-sm-6.col-xs-12
             .post-container-show
               for comment, i in results
-                +panel("comment", "info")
+                +comment("comment", "info")
                   .post-style-container
                     .heading_container
                       img.profile_pic(src="http://images.fandango.com/MDCsite/images/featured/201411/Strike%20Force%20Eagle%203%20poster_188x188.jpg")
