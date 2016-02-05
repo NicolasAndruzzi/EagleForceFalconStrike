@@ -7,7 +7,8 @@ var bodyParser = require('body-parser');
 var session = require('cookie-session')
 require('dotenv').load()
 var passport = require('passport');
-var expressValidator = require('express-validator'),
+var expressValidator = require('express-validator')
+var util = require('util')
 var LinkedInStrategy = require('passport-linkedin').Strategy
 var unirest = require('unirest');
 var routes = require('./routes/index');
@@ -32,7 +33,46 @@ app.set('view engine', 'jade');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
+app.use(express.bodyParser());
 app.use(expressValidator([options]));
+app.post('/:urlparam', function(req, res) {
+
+  // VALIDATION
+  // checkBody only checks req.body; none of the other req parameters
+  // Similarly checkParams only checks in req.params (URL params) and
+  // checkQuery only checks req.query (GET params).
+  req.checkBody('postparam', 'Invalid postparam').notEmpty().isInt();
+  req.checkParams('urlparam', 'Invalid urlparam').isAlpha();
+  req.checkQuery('getparam', 'Invalid getparam').isInt();
+
+  // OR assert can be used to check on all 3 types of params.
+  // req.assert('postparam', 'Invalid postparam').notEmpty().isInt();
+  // req.assert('urlparam', 'Invalid urlparam').isAlpha();
+  // req.assert('getparam', 'Invalid getparam').isInt();
+
+  // SANITIZATION
+  // as with validation these will only validate the corresponding
+  // request object
+  req.sanitizeBody('postparam').toBoolean();
+  req.sanitizeParams('urlparam').toBoolean();
+  req.sanitizeQuery('getparam').toBoolean();
+
+  // OR find the relevent param in all areas
+  req.sanitize('postparam').toBoolean();
+
+  var errors = req.validationErrors();
+  if (errors) {
+    res.send('There have been validation errors: ' + util.inspect(errors), 400);
+    return;
+  }
+  res.json({
+    urlparam: req.params.urlparam,
+    getparam: req.params.getparam,
+    postparam: req.params.postparam
+  });
+});
+
+app.listen(3000);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
