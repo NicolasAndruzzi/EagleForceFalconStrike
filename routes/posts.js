@@ -64,15 +64,14 @@ router.get('/:post_id/edit', function(req, res, next){
 router.post('/:post_id/edit', function(req, res, next){
   var errors = validate(req.body)
   var profile = res.locals.user
-  if(errors.length){
-    res.render('posts/edit', {post: req.params.post_id, info: req.body, errors: errors, profile: profile, title: "correctly edit your post, mo-fo"})
-  } else {
-
+    if(errors.length){
+      res.render('posts/edit', {post: {id: req.params.post_id}, info: req.body, errors: errors, profile: profile, title: "correctly edit your post, mo-fo"})
+    } else {
   Posts().where('id', req.params.post_id).update(req.body).then(function(post){
     Users().where('id', post.author_id).first().then(function(user){
       res.redirect('/dashboard');
-    });
-  })
+      });
+    })
   }
 })
 
