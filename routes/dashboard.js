@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var knex = require('../db/knex');
 var unirest = require('unirest');
+var validate = require('../lib/validations')
+
 function Users(){
   return knex('users');
 }
@@ -36,6 +38,11 @@ router.get('/', function (req, res, next) {
 
 //post route to submit form and update the Posts database to be displayed on dashboard page
 router.post('/', function (req, res, next) {
+  var errors = validate(req.body)
+  var profile = res.locals.user
+  if(errors.length){
+    res.render('posts/form', {info: req.body, errors: errors, profile: profile, title: "fix your post, mo-fo"})
+  } else {
   Users().where('linkedin_id', res.locals.user.id).first().then(function(users){
     Posts().insert({
       author_id: users.id,
@@ -46,6 +53,7 @@ router.post('/', function (req, res, next) {
       res.redirect('/')
     })
   })
+  }
 })
 
 // upvote a post on dashboard

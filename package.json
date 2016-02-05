@@ -21,6 +21,5 @@
     "pg": "^4.4.4",
     "serve-favicon": "~2.3.0",
     "unirest": "^0.4.2",
-    "validator": "^4.7.1"
   }
 }
