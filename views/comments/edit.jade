@@ -1,19 +1,21 @@
 extends ../layout
 
 block content
-  h1 welcome. now #{title}
-  h3 .... #{title}
-  h6 no... seriously.  #{title}
-  form(action="/posts/#{post.id}/comment" method="post")
-    div.form-group
-      div
-      label(for="subject") post you are commenting on, mo-fo
-      div
-      input.form-control(type="text" id="subject" value= "RE: #{post.subject}" name="subject" readonly="readonly")
-      div
-      label(for="body") Body
-      div
-      input.form-control(type="text" id="body" value=comment.body name="body")
-      div
-    button.btn.btn-primary(type="submit") Submit 
-  
+  div.form
+    h1 now #{title}
+    h3 .... #{title}
+    h6 no... seriously.  #{title}
+    form(action="/posts/#{post.id}/comment/#{comment.id}/edit" method="post")
+      div.form-group
+        div
+        label(for="subject") this is the post you are editing, mo-fo with the subject of: '#{post.body}'
+        div
+        label(for="body") Body
+        div
+        input.form-control(type="text" id="body" value=post.body name="body")
+        div
+      button.btn.btn-primary(type="submit") Submit 
+    form(action="/posts/#{post.id}/delete" method="post")
+      button.btn.btn-primary(type="submit" action="/posts/#{post.id}/delete" method="post") Delete Post
+
+    

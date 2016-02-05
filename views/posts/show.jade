@@ -42,9 +42,8 @@ block content
                         a(href="/users/#{comment.author_id}")= comment.author
                       h5.topic
                         a(href="/posts/#{post.id}/comment/#{comment.id}/show")= post.subject
-                      if profile.id === user.linkedin_id
-                        h5
-                          a.i(href="/posts/#{post.id}/comment") edit comment 
+                      h5
+                        a.i(href="/posts/#{post.id}/comment/#{comment.id}/edit") edit comment 
                     .content-container
                       p.post= comment.body
                     .button-container   

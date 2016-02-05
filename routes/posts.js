@@ -31,8 +31,6 @@ router.get('/:post_id/show', function(req, res, next){
   Posts().where('id', req.params.post_id).first().then(function(post){
     Users().where('id', post.author_id).first().then(function(user){
       Comments().where('post_id', post.id).then(function(comments){
-        console.log("@@@@@@@comments 1@@@@@@");
-        console.log(comments);
         Promise.all(comments.map(function (comment) {
           return Users().where('id', comment.author_id).first().then(function (user) {
             var author = user.first_name + " " + user.last_name;
@@ -40,7 +38,6 @@ router.get('/:post_id/show', function(req, res, next){
             return comment;
           })
         })).then(function (comments) {
-          ("#####comments 2#######")
           var profile = res.locals.user
           res.render('posts/show', {post: post, user:user, profile: profile, comments: comments})
         })
@@ -112,10 +109,28 @@ router.get('/:post_id/comment/:comment_id/show', function(req, res, next){
   })
 })
 
-//edit comment get route
-// router.get('/:post_id/comment/:comment_id/edit', function(req, res, next){
-//
-// })
+// edit individual comment form
+router.get('/:post_id/comment/:comment_id/edit', function(req, res, next){
+  Posts().where('id', req.params.post_id).first().then(function(post){
+    Users().where('id', post.author_id).first().then(function(user){
+      Comments().where('post_id', req.params.post_id).then(function(comment){
+        var profile = res.locals.user
+        res.render('comments/edit', {post: post, user:user, profile: profile, comment: comment, title: "edit your post mofo"})
+      })
+    })
+  })
+})
+
+// post edited comment
+router.post('/:post_id/comment/:comment_id/edit', function (req, res, next) {
+  Posts().where('id', req.params.post_id).first().then(function(post){
+    Users().where('linkedin_id', res.locals.user.id).first().then(function(user){
+      Comments().update(req.body).then(function (comment) {
+        res.redirect('/posts/'+req.params.post_id+'/show')
+      })
+    })
+  })
+})
 
 
 module.exports = router;
