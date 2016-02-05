@@ -20,7 +20,7 @@ html(lang="en")
           +nav_item( "/dashboard/about" ) About
           +nav_item( "/posts/new" ) Add A Post
           +nav_item( "/users" ) All Users
-          +nav_item( "/auth/logout" ) Logout 
+          +nav_item( "/auth/logout" ) Logout
       else 
         +nav("StandApp")
           +nav_item( "/" ) Home
@@ -35,6 +35,8 @@ html(lang="en")
     .container
       +foot("")
         h4 &copy StandApp 2016 All rights reserved
+        a(href='/admin') 
+          h5 Admin Portal
             
               
         
