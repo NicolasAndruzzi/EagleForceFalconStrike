@@ -24,9 +24,10 @@ p.event_details {
   font-size: 12px;
 }
 .man{
-  margin-left: -12vw;
+  /*margin-left: -12vw;*/
   margin-top: 50vh;
   height: 20vh;
+  display: inline-block;
 }
 .navbar-nav{
  float: right;
@@ -127,7 +128,7 @@ p.post {
 .row{
  display: flex;
  justify-content: center;
- margin-top: -70vh;
+ /*margin-top: -70vh;*/
 
 }
 .input{
@@ -151,7 +152,7 @@ p.post {
     border-color: #3498db;
 }
 .form{
-  margin-top: -70vh;
+  /*margin-top: -70vh;*/
 }
 .panel-body {
   padding: 0;
