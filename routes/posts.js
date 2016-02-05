@@ -172,7 +172,7 @@ router.get('/:post_id/downvote', function (req, res, next) {
 
 // upvote a comment on post show page
 router.get('/:post_id/comment/:comment_id/upvote', function (req, res, next) {
-  Comments().where('post_id', req.params.post_id).first().then(function (results) {
+  Comments().where('post_id', req.params.post_id).andWhere('id', req.params.comment_id).first().then(function (results) {
     var votes = results.upvotes;
     votes += 1;
     Comments().where('id', req.params.comment_id).update({
@@ -185,7 +185,7 @@ router.get('/:post_id/comment/:comment_id/upvote', function (req, res, next) {
 
 // downvote a comment on post showpage
 router.get('/:post_id/comment/:comment_id/downvote', function (req, res, next) {
-  Comments().where('post_id', req.params.post_id).first().then(function (results) {
+  Comments().where('post_id', req.params.post_id).andWhere('id', req.params.comment_id).first().then(function (results) {
     var votes = results.downvotes;
     votes += 1;
     Comments().where('id', req.params.comment_id).update({
