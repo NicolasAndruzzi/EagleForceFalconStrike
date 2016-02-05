@@ -1,7 +1,7 @@
 body {
  padding: 4vh;
  font-family: 'Lato', sans-serif;
- overflow: hidden;
+ /*overflow: hidden;*/
  /*overflow: auto;*/
  font-weight: 300;
 }
@@ -9,7 +9,7 @@ body {
    display: none;
 }
 a {
- color: #00B7FF ;
+ color: black ;
 }
 ul.nav a:hover {
    color: #FFA04F !important;
@@ -19,6 +19,9 @@ h5{
 }
 h6{
  margin: 0;
+}
+p.event_details {
+  font-size: 12px;
 }
 .man{
   margin-left: -12vw;
@@ -34,6 +37,8 @@ h6{
 }
 .navbar{
  background-color: #30959A;
+ border-top:1px solid #30959A;
+ border-radius: 5px;
 }
 .post-style-container{
  display: flex;
@@ -47,11 +52,36 @@ h6{
   font-weight: 300;
   /*box-shadow: 2px 2px 1px 1px rgba(29, 31, 29, 0.5);*/
 }
-.panel-heading{
+.panel-heading, .comment-heading{
   background-color: #FF7572;
 }
 .post-heading {
   background-color: #30959A;
+  height: 28px;
+}
+.comment-heading {
+  height: 28px;
+}
+.post {
+  min-height: 142px;
+  border: 2px solid #30959A;
+  border-radius: 3px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+.comment {
+  margin: 0 auto;
+  border: 2px solid #FF7572;
+  border-radius: 3px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+p.post {
+  border: 0;
+  display: inline-block;
+}
+p.index-post {
+  font-size: 12px;
 }
 .post-container{
  height: 70vh;
@@ -67,7 +97,8 @@ h6{
 .content-container{
  padding-top: 5px;
  padding-left: 5px;
- height: 5vh;
+ height: auto;
+ max-height: 80px;
  overflow: auto;
  display: flex;
 }
@@ -95,6 +126,7 @@ h6{
  display: flex;
  justify-content: center;
  margin-top: -70vh;
+
 }
 .input{
  padding: 5vh;
@@ -117,5 +149,15 @@ h6{
     border-color: #3498db;
 }
 .form{
-  margin-top: -75vh;
+  margin-top: -70vh;
+}
+.panel-body {
+  padding: 0;
+}
+.post > .panel-body {
+  border: 0;
+  padding: 5px;
+}
+.comment > .panel-body {
+  padding: 5px;
 }

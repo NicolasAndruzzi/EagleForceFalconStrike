@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var knex = require('../db/knex');
+var Promise = require('bluebird');
 
 function Users(){
   return knex('users');
@@ -18,21 +19,32 @@ function Comments(){
 router.get('/new', function (req, res, next) {
   Users().where("linkedin_id", res.locals.user.id).first().then(function (user){
     if(user){
-    res.render('posts/form', {title: "add a post mo-fo", user: user})
+      var profile = res.locals.user
+      res.render('posts/form', {title: "add a post mo-fo", user: user, profile: profile})
     } else {
       res.redirect('/auth/linkedin')
     }
   })
 })
 
-// get individual post
 router.get('/:post_id/show', function(req, res, next){
   Posts().where('id', req.params.post_id).first().then(function(post){
     Users().where('id', post.author_id).first().then(function(user){
-      Comments().where('post_id', req.params.post_id).then(function(comments){
-        var profile = res.locals.user
-        res.render('posts/show', {post: post, user:user, profile: profile, comments: comments})
-      })
+      Comments().where('post_id', post.id).then(function(comments){
+        console.log("@@@@@@@comments 1@@@@@@");
+        console.log(comments);
+        Promise.all(comments.map(function (comment) {
+          return Users().where('id', comment.author_id).first().then(function (user) {
+            var author = user.first_name + " " + user.last_name;
+            comment.author = author;
+            return comment;
+          })
+        })).then(function (comments) {
+          ("#####comments 2#######")
+          var profile = res.locals.user
+          res.render('posts/show', {post: post, user:user, profile: profile, comments: comments})
+        })
+        })
     })
   })
 })

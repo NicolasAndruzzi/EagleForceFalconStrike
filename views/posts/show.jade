@@ -2,52 +2,52 @@ extends ../layout
 
 block content  
   .row
-      .col-md-12.col-sm-6.col-xs-12
-        .post-container-show
-          if post
-            +panel("post", "info")
-              .post-style-container
-                .heading_container
-                  img.profile_pic(src="http://images.fandango.com/MDCsite/images/featured/201411/Strike%20Force%20Eagle%203%20poster_188x188.jpg")
-                  if user
-                    h6.user_name= user.first_name + " " + user.last_name
-                  h5.topic=post.subject
-                  if profile.id === user.linkedin_id
-                    h5
-                      a.i(href="/posts/#{post.id}/edit") edit post 
-                .content-container
-                  p.post= post.body
-                .button-container   
-                  .comments-container
-                    h5.numberOf 25
-                    if user 
-                      a.i(href="/posts/#{post.id}/comment" class='fa fa-comment-o fa-2x')
-                    else 
-                      a.i(href='/auth/linkedin' class='fa fa-comment-o fa-2x')
-                  .thumbs-container
-                    a.i(href='/dashboard/post/#{post.id}/upvote' class='fa fa-thumbs-o-up fa-2x')
-                    h5.numberOf #{post.upvotes}
-                    a.i(href='/dashboard/post/#{post.id}/downvote' class='fa fa-thumbs-o-down fa-2x')
-                    h5.numberOf #{post.downvotes}
-            .col-md-12.col-sm-6.col-xs-12
-              .post-container-show
-                for comment, i in comments
-                  +panel("comment", "info")
-                    .post-style-container
-                      .heading_container
-                        img.profile_pic(src="http://images.fandango.com/MDCsite/images/featured/201411/Strike%20Force%20Eagle%203%20poster_188x188.jpg")
-                        if user
-                          h6.user_name= user.first_name + " " + user.last_name
-                        h5.topic
-                          a(href="/posts/#{post.id}/comment/#{comment.id}/show")= post.subject
-                        if profile.id === user.linkedin_id
-                          h5
-                            a.i(href="/posts/#{post.id}/comment") edit comment 
-                      .content-container
-                        p.post= comment.body
-                      .button-container   
-                        .thumbs-container
-                          a.i(href='/dashboard/post/#{post.id}/upvote/show' class='fa fa-thumbs-o-up fa-2x')
-                          h5.numberOf #{comment.upvotes}
-                          a.i(href='/dashboard/post/#{post.id}/downvote/show' class='fa fa-thumbs-o-down fa-2x')
-                          h5.numberOf #{comment.downvotes}
+    .col-md-12.col-sm-6.col-xs-12
+      .post-container-show
+        if post
+          +panel("post", "info")
+            .post-style-container
+              .heading_container
+                img.profile_pic(src="http://images.fandango.com/MDCsite/images/featured/201411/Strike%20Force%20Eagle%203%20poster_188x188.jpg")
+                if user
+                  h6.user_name= user.first_name + " " + user.last_name
+                h5.topic=post.subject
+                if profile.id === user.linkedin_id
+                  h5
+                    a.i(href="/posts/#{post.id}/edit") edit post 
+              .content-container
+                p.post= post.body
+              .button-container   
+                .comments-container
+                  h5.numberOf 25
+                  if user 
+                    a.i(href="/posts/#{post.id}/comment" class='fa fa-comment-o fa-2x')
+                  else 
+                    a.i(href='/auth/linkedin' class='fa fa-comment-o fa-2x')
+                .thumbs-container
+                  a.i(href='/dashboard/post/#{post.id}/upvote' class='fa fa-thumbs-o-up fa-2x')
+                  h5.numberOf #{post.upvotes}
+                  a.i(href='/dashboard/post/#{post.id}/downvote' class='fa fa-thumbs-o-down fa-2x')
+                  h5.numberOf #{post.downvotes}
+          .col-md-12.col-sm-6.col-xs-12
+            .post-container-show
+              for comment, i in comments
+                +panel("comment", "info")
+                  .post-style-container
+                    .heading_container
+                      img.profile_pic(src="http://images.fandango.com/MDCsite/images/featured/201411/Strike%20Force%20Eagle%203%20poster_188x188.jpg")
+                      if user
+                        h6.user_name= user.first_name + " " + user.last_name
+                      h5.topic
+                        a(href="/posts/#{post.id}/comment/#{comment.id}/show")= post.subject
+                      if profile.id === user.linkedin_id
+                        h5
+                          a.i(href="/posts/#{post.id}/comment") edit comment 
+                    .content-container
+                      p.post= comment.body
+                    .button-container   
+                      .thumbs-container
+                        a.i(href='/dashboard/post/#{post.id}/upvote/show' class='fa fa-thumbs-o-up fa-2x')
+                        h5.numberOf #{comment.upvotes}
+                        a.i(href='/dashboard/post/#{post.id}/downvote/show' class='fa fa-thumbs-o-down fa-2x')
+                        h5.numberOf #{comment.downvotes}
