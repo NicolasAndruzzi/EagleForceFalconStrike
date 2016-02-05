@@ -2,7 +2,6 @@ body {
  padding: 4vh;
  font-family: 'Lato', sans-serif;
  /*overflow: hidden;*/
- /*overflow: auto;*/
  font-weight: 300;
 }
 ::-webkit-scrollbar {
@@ -163,4 +162,10 @@ p.post {
 }
 .comment > .panel-body {
   padding: 5px;
+}
+.footer {
+  display: flex;
+  justify-content: center;
+  width: 81vw;
+  margin-left: 7vw;
 }
