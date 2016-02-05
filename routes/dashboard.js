@@ -58,12 +58,8 @@ router.get('/about', function (req, res, next) {
 
 router.get('/post/:post_id/upvote', function (req, res, next) {
   Posts().where('id', req.params.post_id).first().then(function (results) {
-    console.log(results);
     var votes = results.upvotes;
-    console.log(votes);
-    console.log("***********");
     votes += 1;
-    console.log(votes);
     Posts().where('id', req.params.post_id).update({
       upvotes: votes
     }).then(function (votes) {
@@ -73,12 +69,8 @@ router.get('/post/:post_id/upvote', function (req, res, next) {
 })
 router.get('/post/:post_id/downvote', function (req, res, next) {
   Posts().where('id', req.params.post_id).first().then(function (results) {
-    console.log(results);
     var votes = results.downvotes;
-    console.log(votes);
-    console.log("***********");
     votes += 1;
-    console.log(votes);
     Posts().where('id', req.params.post_id).update({
       downvotes: votes
     }).then(function (votes) {
@@ -88,12 +80,8 @@ router.get('/post/:post_id/downvote', function (req, res, next) {
 })
 router.get('/post/:post_id/upvote/show', function (req, res, next) {
   Comments().where('id', req.params.post_id).first().then(function (results) {
-    console.log(results);
     var votes = results.upvotes;
-    console.log(votes);
-    console.log("***********");
     votes += 1;
-    console.log(votes);
     Comments().where('id', req.params.post_id).update({
       upvotes: votes
     }).then(function (votes) {
@@ -103,12 +91,8 @@ router.get('/post/:post_id/upvote/show', function (req, res, next) {
 })
 router.get('/post/:post_id/downvote/show', function (req, res, next) {
   Comments().where('id', req.params.post_id).first().then(function (results) {
-    console.log(results);
     var votes = results.downvotes;
-    console.log(votes);
-    console.log("***********");
     votes += 1;
-    console.log(votes);
     Comments().where('id', req.params.post_id).update({
       downvotes: votes
     }).then(function (votes) {

@@ -29,7 +29,6 @@ router.get('/new', function (req, res, next) {
 
 router.get('/:post_id/show', function(req, res, next){
   Posts().where('id', req.params.post_id).first().then(function(post){
-    console.log(post);
     Users().where('id', post.author_id).first().then(function(user){
       Comments().where('post_id', post.id).then(function(comments){
         Promise.all(comments.map(function (comment) {
@@ -40,7 +39,6 @@ router.get('/:post_id/show', function(req, res, next){
           })
         })).then(function (comments) {
           Users().leftJoin("comments", "comments.author_id", "users.id").where("post_id", post.id).then(function (results) {
-                console.log(comments)
                       var profile = res.locals.user
                       var commentCount = comments.length
                       res.render('posts/show', {post: post, user:user, profile: profile, comments: comments, commentCount: commentCount, results:results})
@@ -119,7 +117,6 @@ router.get('/:post_id/comment/:comment_id/edit', function(req, res, next){
   Posts().where('id', req.params.post_id).first().then(function(post){
     Users().where('id', post.author_id).first().then(function(user){
       Comments().where('id', req.params.comment_id).first().then(function(comment){
-        console.log(comment)
         var profile = res.locals.user
         res.render('comments/edit', {post: post, user:user, profile: profile, comment: comment, title: "edit your comment mo-fo"})
       })
