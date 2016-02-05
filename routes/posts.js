@@ -142,6 +142,58 @@ router.post('/:post_id/comment/:comment_id/delete', function(req, res, next){
   })
 })
 
+// upvote a post on post page
+router.get('/:post_id/upvote', function (req, res, next) {
+  Posts().where('id', req.params.post_id).first().then(function (results) {
+    var votes = results.upvotes;
+    votes += 1;
+    Posts().where('id', req.params.post_id).update({
+      upvotes: votes
+    }).then(function (votes) {
+      res.redirect('/posts/'+req.params.post_id+'/show')
+    })
+  })
+})
 
+// downvote post on postpage
+router.get('/:post_id/downvote', function (req, res, next) {
+  Posts().where('id', req.params.post_id).first().then(function (results) {
+    var votes = results.downvotes;
+    votes += 1;
+    Posts().where('id', req.params.post_id).update({
+      downvotes: votes
+    }).then(function (votes) {
+      res.redirect('/posts/'+req.params.post_id+'/show')
+    })
+  })
+})
+
+
+
+// upvote a comment on post show page
+router.get('/:post_id/comment/:comment_id/upvote', function (req, res, next) {
+  Comments().where('post_id', req.params.post_id).first().then(function (results) {
+    var votes = results.upvotes;
+    votes += 1;
+    Comments().where('id', req.params.comment_id).update({
+      upvotes: votes
+    }).then(function (votes) {
+      res.redirect('/posts/'+req.params.post_id+'/show')
+    })
+  })
+})
+
+// downvote a comment on post showpage
+router.get('/:post_id/comment/:comment_id/downvote', function (req, res, next) {
+  Comments().where('post_id', req.params.post_id).first().then(function (results) {
+    var votes = results.downvotes;
+    votes += 1;
+    Comments().where('id', req.params.comment_id).update({
+      downvotes: votes
+    }).then(function (votes) {
+      res.redirect('/posts/'+req.params.post_id+'/show')
+    })
+  })
+})
 
 module.exports = router;

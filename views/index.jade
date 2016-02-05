@@ -32,13 +32,13 @@ block content
                           a.i(href="/auth/linkedin" class='fa fa-comment-o')
                     .thumbs-container
                       if user 
-                        a.i(href='/dashboard/post/#{post.id}/upvote' class='fa fa-thumbs-up')
+                        a.i(href='/dashboard/#{post.id}/upvote' class='fa fa-thumbs-up')
                         h5.numberOf #{post.upvotes}
                       else
                         a.i(href='/auth/linkedin' class='fa fa-thumbs-up')
                         h5.numberOf #{post.upvotes}
                       if user
-                        a.i(href='/dashboard/post/#{post.id}/downvote' class='fa fa-thumbs-down')
+                        a.i(href='/dashboard/#{post.id}/downvote' class='fa fa-thumbs-down')
                         h5.numberOf #{post.downvotes}
                       else
                         a.i(href='/auth/linkedin' class='fa fa-thumbs-down')
@@ -73,13 +73,13 @@ block content
                           a.i(href="/auth/linkedin" class='fa fa-comment-o')
                     .thumbs-container
                       if user 
-                        a.i(href='/dashboard/post/#{post.id}/upvote' class='fa fa-thumbs-up')
+                        a.i(href='/dashboard/#{post.id}/upvote' class='fa fa-thumbs-up')
                         h5.numberOf #{post.upvotes}
                       else
                         a.i(href='/auth/linkedin' class='fa fa-thumbs-up')
                         h5.numberOf #{post.upvotes}
                       if user
-                        a.i(href='/dashboard/post/#{post.id}/downvote' class='fa fa-thumbs-down')
+                        a.i(href='/dashboard/#{post.id}/downvote' class='fa fa-thumbs-down')
                         h5.numberOf #{post.downvotes}
                       else
                         a.i(href='/auth/linkedin' class='fa fa-thumbs-down')
