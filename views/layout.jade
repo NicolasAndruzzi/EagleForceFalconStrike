@@ -14,13 +14,13 @@ html(lang="en")
     link(rel='stylesheet', href='/stylesheets/style.css') 
   body(style="padding-bottom:10rem;")
     .container
-      if user 
+      if user
         +nav("StandApp.  Hello " + profile.displayName)
           +nav_item( "/" ) Home
           +nav_item( "/dashboard/about" ) About
           +nav_item( "/posts/new" ) Add A Post
           +nav_item( "/users" ) All Users
-          +nav_item( "/auth/logout" ) Logout 
+          +nav_item( "/auth/logout" ) Logout
       else 
         +nav("StandApp")
           +nav_item( "/" ) Home

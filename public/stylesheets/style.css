@@ -163,3 +163,35 @@ p.post {
 .comment > .panel-body {
   padding: 5px;
 }
+
+div.about{
+  text-align: center;
+}
+
+li.name{
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #30959A;
+  list-style-type: none;
+}
+
+li.link {
+  list-style-type: none;
+}
+
+h4.about{
+  text-decoration: underline;
+}
+
+table.users{
+  color: #30959A;
+  border-collapse:separate;
+  border-spacing:10px 5px;
+}
+
+tr.users{
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: underline;
+}
