@@ -5,17 +5,17 @@ block content
     h1 now #{title}
     h3 .... #{title}
     h6 no... seriously.  #{title}
-    form(action="/posts/#{post.id}/comment/#{comment.id}/edit" method="post")
+    form(action="/posts/"+post.id+"/comment/"+comment.id+"/" method="post")
       div.form-group
         div
-        label(for="subject") this is the post you are editing, mo-fo with the subject of: '#{post.body}'
+        label this is the comment you are editing, with the subject of, '#{post.body}', mo-fo
         div
         label(for="body") Body
         div
-        input.form-control(type="text" id="body" value=post.body name="body")
+        input.form-control(type="text" id="body" value=comment.body name="body")
         div
       button.btn.btn-primary(type="submit") Submit 
-    form(action="/posts/#{post.id}/delete" method="post")
-      button.btn.btn-primary(type="submit" action="/posts/#{post.id}/delete" method="post") Delete Post
+    form(action="/posts/#{post.id}/comment/#{comment.id}/delete" method="post")
+      button.btn.btn-primary(type="submit" action="/posts/#{post.id}/comment/#{comment.id}/delete" method="post") Delete Post
 
     

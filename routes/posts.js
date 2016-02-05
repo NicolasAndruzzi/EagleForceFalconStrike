@@ -82,7 +82,7 @@ router.get('/:post_id/comment', function(req, res, next){
   })
 })
 
-//post comment back to /post/:post_id/
+//posts a new comment
 router.post('/:post_id/comment', function (req, res, next) {
   Posts().where('id', req.params.post_id).first().then(function(post){
     Users().where('linkedin_id', res.locals.user.id).first().then(function(users){
@@ -113,24 +113,37 @@ router.get('/:post_id/comment/:comment_id/show', function(req, res, next){
 router.get('/:post_id/comment/:comment_id/edit', function(req, res, next){
   Posts().where('id', req.params.post_id).first().then(function(post){
     Users().where('id', post.author_id).first().then(function(user){
-      Comments().where('post_id', req.params.post_id).then(function(comment){
+      Comments().where('id', req.params.comment_id).first().then(function(comment){
+        console.log('*****COMMENTID******');
+        console.log(comment);
         var profile = res.locals.user
-        res.render('comments/edit', {post: post, user:user, profile: profile, comment: comment, title: "edit your post mofo"})
+        res.render('comments/edit', {post: post, user:user, profile: profile, comment: comment, title: "edit your comment mo-fo"})
       })
     })
   })
 })
 
 // post edited comment
-router.post('/:post_id/comment/:comment_id/edit', function (req, res, next) {
+router.post('/:post_id/comment/:comment_id/', function (req, res, next) {
   Posts().where('id', req.params.post_id).first().then(function(post){
     Users().where('linkedin_id', res.locals.user.id).first().then(function(user){
-      Comments().update(req.body).then(function (comment) {
+      console.log('*******THE COMMENT IS********');
+      console.log(req.params.comment_id);
+      Comments().where('id', req.params.comment_id).update(req.body).then(function (comment) {
+        console.log(comment);
         res.redirect('/posts/'+req.params.post_id+'/show')
       })
     })
   })
 })
+
+// deletes a comment
+router.post('/:post_id/comment/:comment_id/delete', function(req, res, next){
+  Comments().where('id', req.params.comment_id).first().del().then(function(result) {
+    res.redirect('/posts/'+req.params.post_id+'/show');
+  })
+})
+
 
 
 module.exports = router;
