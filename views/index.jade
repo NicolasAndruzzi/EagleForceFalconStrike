@@ -1,58 +1,88 @@
 extends layout
 
 block content
-  .row
-    if users
-      if admin
-        h4 Admin is 
-          a(href="/dashboard/admin")= profile.displayName
-          br
-  .col-md-4.col-sm-6.col-xs-12
-    +panel("Helps", "active")
-      .post-container
-        each post, i in users
-          if post.cat_name === "helps"
-            +post(" ", "info")
-              .post-style-container
-                .heading_container
-                  img.profile_pic(src="http://images.fandango.com/MDCsite/images/featured/201411/Strike%20Force%20Eagle%203%20poster_188x188.jpg")
-                  h6.user_name
-                    if user 
-                      a(href="/users/#{post.author_id}")= post.first_name + " " + post.last_name
-                    else
-                      a(href="/auth/linkedin")= post.first_name + " " + post.last_name
-                  h5.topic
-                    if user
-                      a(href="/posts/#{post.id}/show")= post.subject
-                    else 
-                      a(href="/auth/linkedin")= post.subject
-                .content-container
-                  p.index-post= post.body
-                .button-container   
-                  .comments-container
-                    h5.numberOf 
+  .row-fluid
+    .col-md-4.col-sm-6.col-xs-12
+      +panel("Helps", "active")
+        .post-container
+          each post, i in users
+            if post.cat_name === "helps"
+              +post(" ", "info")
+                .post-style-container
+                  .heading_container
+                    img.profile_pic(src="http://images.fandango.com/MDCsite/images/featured/201411/Strike%20Force%20Eagle%203%20poster_188x188.jpg")
+                    h6.user_name
+                      if user 
+                        a(href="/users/#{post.author_id}")= post.first_name + " " + post.last_name
+                      else
+                        a(href="/auth/linkedin")= post.first_name + " " + post.last_name
+                    h5.topic
+                      if user
+                        a(href="/posts/#{post.id}/show")= post.subject
+                      else 
+                        a(href="/auth/linkedin")= post.subject
+                  .content-container
+                    p.index-post= post.body
+                  .button-container   
+                    .comments-container
+                      h5.numberOf 
+                        if user 
+                          a.i(href='/posts/#{post.id}/comment' class='fa fa-comment-o') +
+                        else 
+                          a.i(href="/auth/linkedin" class='fa fa-comment-o')
+                    .thumbs-container
+                      if user 
+                        a.i(href='/dashboard/#{post.id}/upvote' class='fa fa-thumbs-up')
+                        h5.numberOf #{post.upvotes}
+                      else
+                        a.i(href='/auth/linkedin' class='fa fa-thumbs-up')
+                        h5.numberOf #{post.upvotes}
+                      if user
+                        a.i(href='/dashboard/#{post.id}/downvote' class='fa fa-thumbs-down')
+                        h5.numberOf #{post.downvotes}
+                      else
+                        a.i(href='/auth/linkedin' class='fa fa-thumbs-down')
+                        h5.numberOf #{post.downvotes}
+    .col-md-4.col-sm-6.col-xs-12
+      +panel("Interestings", "active")
+        .post-container
+          each post, i in users
+            if post.cat_name === "interestings"
+              +post(" ", "info")
+                .post-style-container
+                  .heading_container
+                    img.profile_pic(src="http://images.fandango.com/MDCsite/images/featured/201411/Strike%20Force%20Eagle%203%20poster_188x188.jpg")
+                    h6.user_name
                       if user 
                         a.i(href='/posts/#{post.id}/comment' class='fa fa-comment-o')
                       else 
-                        a.i(href="/auth/linkedin" class='fa fa-comment-o')
-                  .thumbs-container
-                    if user 
-                      a.i(href='/dashboard/post/#{post.id}/upvote' class='fa fa-thumbs-up')
-                      h5.numberOf #{post.upvotes}
-                    else
-                      a.i(href='/auth/linkedin' class='fa fa-thumbs-up')
-                      h5.numberOf #{post.upvotes}
-                    if user
-                      a.i(href='/dashboard/post/#{post.id}/downvote' class='fa fa-thumbs-down')
-                      h5.numberOf #{post.downvotes}
-                    else
-                      a.i(href='/auth/linkedin' class='fa fa-thumbs-down')
-                      h5.numberOf #{post.downvotes}
-  .col-md-4.col-sm-6.col-xs-12
-    +panel("Interestings", "active")
-      .post-container
-        each post, i in users
-          if post.cat_name === "interestings"
+                        a(href="/auth/linkedin")= post.subject
+                  .content-container
+                    p.index-post= post.body
+                  .button-container   
+                    .comments-container
+                      h5.numberOf 
+                        if user 
+                          a.i(href='/posts/#{post.id}/comment' class='fa fa-comment-o') +
+                        else 
+                          a.i(href="/auth/linkedin" class='fa fa-comment-o')
+                    .thumbs-container
+                      if user 
+                        a.i(href='/dashboard/#{post.id}/upvote' class='fa fa-thumbs-up')
+                        h5.numberOf #{post.upvotes}
+                      else
+                        a.i(href='/auth/linkedin' class='fa fa-thumbs-up')
+                        h5.numberOf #{post.upvotes}
+                      if user
+                        a.i(href='/dashboard/#{post.id}/downvote' class='fa fa-thumbs-down')
+                        h5.numberOf #{post.downvotes}
+                      else
+                        a.i(href='/auth/linkedin' class='fa fa-thumbs-down')
+                        h5.numberOf #{post.downvotes}
+    .col-md-4.col-sm-6.col-xs-12
+      +panel("Events", "active")
+        .post-container
+          each event, i in events
             +post(" ", "info")
               .post-style-container
                 .heading_container

@@ -29,7 +29,6 @@ router.get('/new', function (req, res, next) {
 
 router.get('/:post_id/show', function(req, res, next){
   Posts().where('id', req.params.post_id).first().then(function(post){
-    console.log(post);
     Users().where('id', post.author_id).first().then(function(user){
       Comments().where('post_id', post.id).then(function(comments){
         Promise.all(comments.map(function (comment) {
@@ -40,7 +39,6 @@ router.get('/:post_id/show', function(req, res, next){
           })
         })).then(function (comments) {
           Users().leftJoin("comments", "comments.author_id", "users.id").where("post_id", post.id).then(function (results) {
-                console.log(comments)
                       var profile = res.locals.user
                       var commentCount = comments.length
                       res.render('posts/show', {post: post, user:user, profile: profile, comments: comments, commentCount: commentCount, results:results})
@@ -119,7 +117,6 @@ router.get('/:post_id/comment/:comment_id/edit', function(req, res, next){
   Posts().where('id', req.params.post_id).first().then(function(post){
     Users().where('id', post.author_id).first().then(function(user){
       Comments().where('id', req.params.comment_id).first().then(function(comment){
-        console.log(comment)
         var profile = res.locals.user
         res.render('comments/edit', {post: post, user:user, profile: profile, comment: comment, title: "edit your comment mo-fo"})
       })
@@ -145,6 +142,56 @@ router.post('/:post_id/comment/:comment_id/delete', function(req, res, next){
   })
 })
 
+// upvote a post on post page
+router.get('/:post_id/upvote', function (req, res, next) {
+  Posts().where('id', req.params.post_id).first().then(function (results) {
+    var votes = results.upvotes;
+    votes += 1;
+    Posts().where('id', req.params.post_id).update({
+      upvotes: votes
+    }).then(function (votes) {
+      res.redirect('/posts/'+req.params.post_id+'/show')
+    })
+  })
+})
 
+// downvote post on postpage
+router.get('/:post_id/downvote', function (req, res, next) {
+  Posts().where('id', req.params.post_id).first().then(function (results) {
+    var votes = results.downvotes;
+    votes += 1;
+    Posts().where('id', req.params.post_id).update({
+      downvotes: votes
+    }).then(function (votes) {
+      res.redirect('/posts/'+req.params.post_id+'/show')
+    })
+  })
+})
+
+// upvote a comment on post show page
+router.get('/:post_id/comment/:comment_id/upvote', function (req, res, next) {
+  Comments().where('post_id', req.params.post_id).andWhere('id', req.params.comment_id).first().then(function (results) {
+    var votes = results.upvotes;
+    votes += 1;
+    Comments().where('id', req.params.comment_id).update({
+      upvotes: votes
+    }).then(function (votes) {
+      res.redirect('/posts/'+req.params.post_id+'/show')
+    })
+  })
+})
+
+// downvote a comment on post showpage
+router.get('/:post_id/comment/:comment_id/downvote', function (req, res, next) {
+  Comments().where('post_id', req.params.post_id).andWhere('id', req.params.comment_id).first().then(function (results) {
+    var votes = results.downvotes;
+    votes += 1;
+    Comments().where('id', req.params.comment_id).update({
+      downvotes: votes
+    }).then(function (votes) {
+      res.redirect('/posts/'+req.params.post_id+'/show')
+    })
+  })
+})
 
 module.exports = router;

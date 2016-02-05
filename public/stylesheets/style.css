@@ -2,7 +2,6 @@ body {
  padding: 4vh;
  font-family: 'Lato', sans-serif;
  /*overflow: hidden;*/
- /*overflow: auto;*/
  font-weight: 300;
 }
 ::-webkit-scrollbar {
@@ -13,6 +12,7 @@ a {
 }
 ul.nav a:hover {
    color: #FFA04F !important;
+   text-decoration: underline;
  }
 h5{
  margin: 0;
@@ -24,9 +24,10 @@ p.event_details {
   font-size: 12px;
 }
 .man{
-  margin-left: -12vw;
+  /*margin-left: -12vw;*/
   margin-top: 50vh;
   height: 20vh;
+  display: inline-block;
 }
 .navbar-nav{
  float: right;
@@ -40,6 +41,7 @@ p.event_details {
  border-top:1px solid #30959A;
  border-radius: 5px;
 }
+
 .post-style-container{
  display: flex;
  flex-direction: column;
@@ -127,7 +129,7 @@ p.post {
 .row{
  display: flex;
  justify-content: center;
- margin-top: -70vh;
+ /*margin-top: -70vh;*/
 
 }
 .input{
@@ -151,7 +153,7 @@ p.post {
     border-color: #3498db;
 }
 .form{
-  margin-top: -70vh;
+  /*margin-top: -70vh;*/
 }
 .panel-body {
   padding: 0;
@@ -194,4 +196,16 @@ tr.users{
   font-size: 18px;
   font-weight: bold;
   text-decoration: underline;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+}
+.navbar-default .navbar-brand {
+  color: white;
+}
+.navbar-default .navbar-brand:hover {
+    color: #FFA04F;
+    text-decoration: underline;
 }
