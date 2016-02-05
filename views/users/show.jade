@@ -27,7 +27,7 @@ block content
                   p.index-post= post.body
                 .button-container   
                   .comments-container
-                    h5.numberOf 25
+                    h5
                       if user 
                         a.i(href='/posts/#{post.id}/comment' class='fa fa-comment-o')
                       else 
@@ -35,16 +35,16 @@ block content
                   .thumbs-container
                     if user 
                       a.i(href='#' class='fa fa-thumbs-up')
-                      h5.numberOf 13
+                      h5
                     else
                       a.i(href='/auth/linkedin' class='fa fa-thumbs-up')
-                      h5.numberOf 13
+                      h5
                     if user
                       a.i(href='#' class='fa fa-thumbs-down')
-                      h5.numberOf 20
+                      h5
                     else
                       a.i(href='/auth/linkedin' class='fa fa-thumbs-down')
-                      h5.numberOf 20
+                      h5
   .col-md-4.col-sm-6.col-xs-12
     +panel("Interestings", "active")
       .post-container
@@ -68,7 +68,7 @@ block content
                   p.post= post.body
                 .button-container   
                   .comments-container
-                    h5.numberOf 25
+                    h5
                       if user 
                         a.i(href='/posts/#{post.id}/comment' class='fa fa-comment-o')
                       else 
@@ -76,14 +76,14 @@ block content
                   .thumbs-container
                     if user 
                       a.i(href='#' class='fa fa-thumbs-up')
-                      h5.numberOf 13
+                      h5
                     else
                       a.i(href='/auth/linkedin' class='fa fa-thumbs-up')
-                      h5.numberOf 13
+                      h5
                     if user
                       a.i(href='#' class='fa fa-thumbs-down')
-                      h5.numberOf 20
+                      h5
                     else
                       a.i(href='/auth/linkedin' class='fa fa-thumbs-down')
-                      h5.numberOf 20
+                      h5
     
