@@ -3,12 +3,12 @@ mixin nav(name, id, style)
    - var style = (typeof style === 'undefined') ? "default" : style
    nav( role="navigation", class=["navbar", "navbar-" + style, "navbar-custom"] )
        .navbar-header
-           button.navbar-toggle.collapsed( type="button", data-toggle="collapse", data-target="#" + id, aria-expanded="false", aria-controls="navbar")
+           button.navbar-toggle.collapsed( type="button", data-toggle="collapse", data-target=".navbar-collapse", aria-expanded="false", aria-controls="navbar")
                span.sr-only Toggle navigation
                span.icon-bar
                span.icon-bar
                span.icon-bar
-           a.navbar-brand(href="#")= name
+           a.navbar-brand(href="/")= name
 
        .collapse.navbar-collapse( id=id )
            ul.nav.navbar-nav
