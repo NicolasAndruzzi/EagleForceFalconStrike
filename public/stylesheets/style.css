@@ -27,6 +27,7 @@ p.event_details {
   margin-left: -12vw;
   margin-top: 50vh;
   height: 20vh;
+  display: inline-block;
 }
 .navbar-nav{
  float: right;
