@@ -2,7 +2,6 @@ body {
  padding: 4vh;
  font-family: 'Lato', sans-serif;
  /*overflow: hidden;*/
- /*overflow: auto;*/
  font-weight: 300;
 }
 ::-webkit-scrollbar {
@@ -13,6 +12,7 @@ a {
 }
 ul.nav a:hover {
    color: #FFA04F !important;
+   text-decoration: underline;
  }
 h5{
  margin: 0;
@@ -41,6 +41,7 @@ p.event_details {
  border-top:1px solid #30959A;
  border-radius: 5px;
 }
+
 .post-style-container{
  display: flex;
  flex-direction: column;
@@ -167,4 +168,48 @@ p.post {
 .errors{
   color: red;
   font-weight: 400;
+
+div.about{
+  text-align: center;
+}
+
+li.name{
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #30959A;
+  list-style-type: none;
+}
+
+li.link {
+  list-style-type: none;
+}
+
+h4.about{
+  text-decoration: underline;
+}
+
+table.users{
+  color: #30959A;
+  border-collapse:separate;
+  border-spacing:10px 5px;
+}
+
+tr.users{
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+}
+.navbar-default .navbar-brand {
+  color: white;
+}
+.navbar-default .navbar-brand:hover {
+    color: #FFA04F;
+    text-decoration: underline;
+>>>>>>> master
 }

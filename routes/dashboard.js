@@ -82,6 +82,7 @@ router.get('/:post_id/downvote', function (req, res, next) {
     })
 })
 
+
 // get rout to the "about" page
 router.get('/about', function (req, res, next) {
   var profile = res.locals.user
