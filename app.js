@@ -50,7 +50,7 @@ passport.use(new LinkedInStrategy({
   function(token, tokenSecret, profile, done) {
     Users().where('linkedin_id', profile.id).first().then(function (user) {
       if(user){
-        console.log(profile);
+        
       } else {
         Users().insert({
           linkedin_id: profile.id,
