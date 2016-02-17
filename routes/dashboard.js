@@ -29,9 +29,9 @@ router.get('/', function (req, res, next) {
   Users().fullOuterJoin("posts", "users.id", "posts.author_id").then(function (users){
     if(req.session){
       var profile = res.locals.user
-      res.render('index', {users:users, profile: profile});
+      res.render('index', {users:users, profile: profile, events: events});
     } else {
-      res.render('index', {users:users, profile: profile});
+      res.render('index', {users:users, profile: profile, events: events});
     }
   })
 })
