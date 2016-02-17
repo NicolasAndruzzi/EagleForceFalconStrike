@@ -15,7 +15,6 @@ var dashboard = require('./routes/dashboard');
 var posts = require('./routes/posts');
 var authRoutes = require('./routes/auth');
 var admin = require('./routes/admin')
-// var login = require('./routes/login');
 
 var app = express();
 var knex = require('./db/knex');
@@ -50,7 +49,6 @@ passport.use(new LinkedInStrategy({
   function(token, tokenSecret, profile, done) {
     Users().where('linkedin_id', profile.id).first().then(function (user) {
       if(user){
-        console.log(profile);
       } else {
         Users().insert({
           linkedin_id: profile.id,
@@ -84,7 +82,6 @@ app.use(function (req, res, next) {
 app.use('/', routes);
 app.use('/auth', authRoutes);
 app.use('/admin', admin);
-// app.use('/login', login);
 app.use('/dashboard', dashboard)
 app.use('/users', users);
 app.use('/posts', posts);
